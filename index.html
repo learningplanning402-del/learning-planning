@@ -4,11 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="description" content="RAMON GROUP - International Project Services. Planning, Project Controls, Consulting and Professional Training.">
-<meta name="theme-color" content="#081b33">
+<meta name="theme-color" content="#ffffff">
 
-<!-- Website profile icon -->
 <link rel="icon" type="image/png" href="ramon-profile.png">
 <link rel="apple-touch-icon" href="ramon-profile.png">
 
@@ -36,7 +34,7 @@ html {
 }
 
 body {
-  font-family: Arial, Tahoma, sans-serif;
+  font-family: Calibri, Arial, sans-serif;
   color: var(--text);
   line-height: 1.7;
   background: var(--white);
@@ -47,6 +45,10 @@ a {
   color: inherit;
 }
 
+button {
+  font-family: inherit;
+}
+
 .container {
   width: min(1120px, 90%);
   margin: auto;
@@ -55,13 +57,13 @@ a {
 /* HEADER */
 
 header {
-  background: var(--navy);
-  color: white;
+  background: #ffffff;
+  color: var(--navy);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(201,163,77,.4);
-  box-shadow: 0 5px 25px rgba(0,0,0,.12);
+  border-bottom: 1px solid #e6eaf0;
+  box-shadow: 0 5px 25px rgba(0,0,0,.07);
 }
 
 .navbar {
@@ -92,8 +94,9 @@ nav {
 }
 
 nav a {
-  font-size: 13px;
-  color: #e7ebf1;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
   transition: .25s;
 }
 
@@ -104,34 +107,68 @@ nav a:hover {
 .lang-btn {
   border: 1px solid var(--gold);
   background: transparent;
-  color: var(--gold);
+  color: var(--navy);
   padding: 9px 15px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 15px;
   font-weight: bold;
   transition: .25s;
 }
 
 .lang-btn:hover {
   background: var(--gold);
-  color: var(--navy);
+  color: white;
 }
 
-/* HERO */
+/* HERO SLIDESHOW */
 
 .hero {
-  background:
-    linear-gradient(90deg, rgba(5,20,39,.94), rgba(5,20,39,.70)),
-    url("https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=2000&q=85");
-  background-position: center;
-  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   color: white;
-  min-height: 620px;
+  min-height: 660px;
   display: flex;
   align-items: center;
+  background: var(--navy);
+}
+
+.hero-slides,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-slides {
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,20,39,.88),
+      rgba(5,20,39,.62)
+    );
 }
 
 .hero-content {
+  position: relative;
   max-width: 760px;
   padding: 85px 0;
 }
@@ -149,7 +186,7 @@ nav a:hover {
 .eyebrow {
   color: var(--gold);
   letter-spacing: 3px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -161,8 +198,8 @@ nav a:hover {
 }
 
 .hero p {
-  color: #dce4ef;
-  font-size: 17px;
+  color: #edf1f6;
+  font-size: 18px;
   max-width: 620px;
   margin-bottom: 30px;
 }
@@ -206,7 +243,7 @@ section {
 
 .section-heading h2 {
   color: var(--navy);
-  font-size: 34px;
+  font-size: 36px;
   margin-bottom: 12px;
 }
 
@@ -249,13 +286,13 @@ section {
 
 .card h3 {
   color: var(--navy);
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 12px;
 }
 
 .card p {
   color: #697789;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* ABOUT */
@@ -278,13 +315,14 @@ section {
 
 .about-text h2 {
   color: var(--navy);
-  font-size: 34px;
+  font-size: 36px;
   margin-bottom: 20px;
 }
 
 .about-text p {
   color: #647286;
   margin-bottom: 18px;
+  font-size: 17px;
 }
 
 /* INDUSTRIES */
@@ -324,11 +362,12 @@ section {
 .industry h3 {
   color: var(--gold);
   margin-bottom: 8px;
+  font-size: 21px;
 }
 
 .industry p {
   color: #d0d8e2;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* TRAINING */
@@ -350,13 +389,14 @@ section {
 
 .training-box h3 {
   color: var(--navy);
-  font-size: 25px;
+  font-size: 27px;
   margin-bottom: 15px;
 }
 
 .training-box p {
   color: #647286;
   margin-bottom: 25px;
+  font-size: 17px;
 }
 
 /* CONTACT */
@@ -368,24 +408,26 @@ section {
 
 .contact h2 {
   color: var(--navy);
-  font-size: 34px;
+  font-size: 36px;
   margin-bottom: 15px;
 }
 
 .contact p {
   color: #647286;
   margin-bottom: 25px;
+  font-size: 17px;
 }
 
 /* FOOTER */
 
 footer {
-  background: #051426;
-  color: #c5ceda;
+  background: #ffffff;
+  color: var(--navy);
   padding: 40px 0;
   text-align: center;
-  font-size: 13px;
+  font-size: 15px;
   border-top: 2px solid var(--gold);
+  box-shadow: 0 -5px 25px rgba(0,0,0,.04);
 }
 
 .footer-logo {
@@ -398,13 +440,14 @@ footer {
 }
 
 footer strong {
-  color: var(--gold);
+  color: var(--navy);
+  font-size: 17px;
 }
 
 /* PERSIAN / RTL */
 
 [dir="rtl"] body {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: Calibri, Tahoma, Arial, sans-serif;
 }
 
 [dir="rtl"] .eyebrow {
@@ -416,6 +459,10 @@ footer strong {
   text-align: right;
 }
 
+[dir="rtl"] .hero p {
+  margin-right: 0;
+}
+
 /* RESPONSIVE */
 
 @media(max-width: 900px) {
@@ -424,7 +471,7 @@ footer strong {
   }
 
   nav a {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .cards {
@@ -455,7 +502,7 @@ footer strong {
   }
 
   .hero {
-    min-height: 540px;
+    min-height: 570px;
   }
 
   .hero-content {
@@ -467,7 +514,7 @@ footer strong {
   }
 
   .hero p {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .about-grid {
@@ -498,7 +545,17 @@ footer strong {
   .section-heading h2,
   .about-text h2,
   .contact h2 {
-    font-size: 28px;
+    font-size: 29px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-slide {
+    transition: none;
   }
 }
 </style>
@@ -509,7 +566,6 @@ footer strong {
 <header>
   <div class="container navbar">
 
-    <!-- HEADER LOGO -->
     <a href="#home" class="brand">
       <img src="ramon-logo.png" alt="RAMON GROUP Logo">
     </a>
@@ -530,12 +586,33 @@ footer strong {
 
 <main>
 
-<!-- HOME -->
+<!-- HOME / SLIDESHOW -->
 <section class="hero" id="home">
+
+  <div class="hero-slides" aria-hidden="true">
+    <!-- Iranian industrial project backgrounds -->
+    <div class="hero-slide active"
+      style="background-image:url('https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=2000&q=85')">
+    </div>
+
+    <div class="hero-slide"
+      style="background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=85')">
+    </div>
+
+    <div class="hero-slide"
+      style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85')">
+    </div>
+
+    <div class="hero-slide"
+      style="background-image:url('https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=2000&q=85')">
+    </div>
+  </div>
+
+  <div class="hero-overlay"></div>
+
   <div class="container">
     <div class="hero-content">
 
-      <!-- MAIN HOME LOGO -->
       <img src="ramon-logo.png"
            alt="RAMON GROUP"
            class="hero-logo">
@@ -546,9 +623,9 @@ footer strong {
         INTERNATIONAL PROJECT SERVICES
       </div>
 
-      <h1 data-en="Engineering Excellence. Project Success."
-          data-fa="تعالی مهندسی؛ موفقیت پروژه‌ها">
-        Engineering Excellence. Project Success.
+      <h1 data-en="Smart Engineering. Precise Control. Sustainable Project Success."
+          data-fa="مهندسی هوشمند، کنترل دقیق، موفقیت پایدار پروژه‌ها">
+        Smart Engineering. Precise Control. Sustainable Project Success.
       </h1>
 
       <p data-en="Professional services in project planning, project controls, consulting and training for the energy and industrial sectors."
@@ -751,7 +828,6 @@ footer strong {
 <footer>
   <div class="container">
 
-    <!-- FOOTER LOGO -->
     <img src="ramon-logo.png"
          alt="RAMON GROUP"
          class="footer-logo">
@@ -786,6 +862,20 @@ function toggleLanguage() {
   document.title = currentLanguage === "en"
     ? "RAMON GROUP | International Project Services"
     : "رامون گروپ | خدمات بین‌المللی پروژه";
+}
+
+/* HERO SLIDESHOW: CHANGE EVERY 5 SECONDS */
+const heroSlides = document.querySelectorAll(".hero-slide");
+let activeSlide = 0;
+
+if (heroSlides.length > 1) {
+  setInterval(() => {
+    heroSlides[activeSlide].classList.remove("active");
+
+    activeSlide = (activeSlide + 1) % heroSlides.length;
+
+    heroSlides[activeSlide].classList.add("active");
+  }, 5000);
 }
 
 document.getElementById("year").textContent =
