@@ -2,1342 +2,559 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#091725">
-  <meta name="description" content="RAMON GROUP - International Project Services, Project Controls, Planning, Scheduling, Claims Management, Consulting and Professional Training.">
-  <title>RAMON GROUP | International Project Services</title>
-
-  <link rel="icon" type="image/png" href="ramon-profile.png">
-  <link rel="apple-touch-icon" href="ramon-profile.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --navy: #091725;
-      --navy-light: #12283b;
-      --gold: #c9a45c;
-      --gold-light: #e2c787;
-      --white: #ffffff;
-      --muted: #aab5c0;
-      --light-bg: #f5f6f7;
-      --dark-text: #182635;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: "Inter", "Vazirmatn", sans-serif;
-      background: var(--white);
-      color: var(--dark-text);
-      line-height: 1.8;
-    }
-
-    body.fa {
-      font-family: "Vazirmatn", sans-serif;
-      direction: rtl;
-      text-align: right;
-    }
-
-    a { text-decoration: none; color: inherit; }
-    button { font: inherit; }
-
-    .container {
-      width: min(1160px, 90%);
-      margin: auto;
-    }
-
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: #fff;
-      border-bottom: 2px solid var(--gold);
-      box-shadow: 0 3px 15px rgba(0,0,0,.06);
-    }
-
-    .header-inner {
-      min-height: 88px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand img {
-      display: block;
-      width: 190px;
-      max-height: 72px;
-      object-fit: contain;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 23px;
-    }
-
-    nav a {
-      color: var(--dark-text);
-      font-size: 13px;
-      font-weight: 600;
-      transition: color .25s;
-    }
-
-    nav a:hover { color: var(--gold); }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .language-button {
-      background: transparent;
-      color: var(--dark-text);
-      border: 1px solid var(--gold);
-      padding: 9px 14px;
-      cursor: pointer;
-      border-radius: 3px;
-      font-weight: 700;
-      font-size: 12px;
-    }
-
-    .menu-button {
-      display: none;
-      background: var(--navy);
-      color: white;
-      border: 1px solid var(--gold);
-      padding: 7px 11px;
-      cursor: pointer;
-      border-radius: 3px;
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      min-height: 650px;
-      height: min(78vh, 760px);
-      background: var(--navy);
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .slides, .slide {
-      position: absolute;
-      inset: 0;
-    }
-
-    .slide {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 1s ease, visibility 1s;
-    }
-
-    .slide.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(
-        90deg,
-        rgba(5,17,29,.93) 0%,
-        rgba(5,17,29,.76) 55%,
-        rgba(5,17,29,.28) 100%
-      );
-    }
-
-    body.fa .hero::after {
-      background: linear-gradient(
-        -90deg,
-        rgba(5,17,29,.93) 0%,
-        rgba(5,17,29,.76) 55%,
-        rgba(5,17,29,.28) 100%
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      min-height: 650px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      color: white;
-      padding-top: 30px;
-      padding-bottom: 70px;
-    }
-
-    .eyebrow {
-      color: var(--gold-light);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    body.fa .eyebrow {
-      letter-spacing: 0;
-      font-size: 14px;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 58px);
-      line-height: 1.3;
-      max-width: 800px;
-      font-weight: 800;
-      margin-bottom: 22px;
-    }
-
-    .hero p {
-      max-width: 720px;
-      color: #e0e5eb;
-      font-size: 16px;
-      line-height: 2;
-      margin-bottom: 30px;
-    }
-
-    .gold-button {
-      display: inline-block;
-      padding: 13px 25px;
-      background: var(--gold);
-      color: var(--navy);
-      font-weight: 800;
-      border: 1px solid var(--gold);
-      transition: .25s;
-      text-align: center;
-    }
-
-    .gold-button:hover {
-      background: transparent;
-      color: var(--gold-light);
-    }
-
-    .slide-controls {
-      position: absolute;
-      z-index: 3;
-      bottom: 32px;
-      left: 5%;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    body.fa .slide-controls {
-      left: auto;
-      right: 5%;
-    }
-
-    .slide-arrow {
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(255,255,255,.6);
-      background: rgba(9,23,37,.45);
-      color: white;
-      cursor: pointer;
-      font-size: 20px;
-    }
-
-    .slide-arrow:hover {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .slide-dots {
-      display: flex;
-      gap: 8px;
-    }
-
-    .slide-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      border: 0;
-      background: rgba(255,255,255,.5);
-      cursor: pointer;
-    }
-
-    .slide-dot.active {
-      background: var(--gold-light);
-      transform: scale(1.3);
-    }
-
-    /* GENERAL SECTIONS */
-
-    section {
-      padding: 90px 0;
-      scroll-margin-top: 90px;
-    }
-
-    .section-heading {
-      text-align: center;
-      max-width: 780px;
-      margin: 0 auto 50px;
-    }
-
-    .section-heading .eyebrow {
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(27px, 4vw, 40px);
-      color: var(--navy);
-      line-height: 1.4;
-      margin-bottom: 15px;
-    }
-
-    .section-heading p {
-      color: #65717d;
-      font-size: 15px;
-    }
-
-    /* SERVICES */
-
-    .services { background: var(--light-bg); }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .service-card {
-      background: white;
-      padding: 30px 25px;
-      border-bottom: 3px solid transparent;
-      box-shadow: 0 8px 30px rgba(10,30,48,.05);
-      transition: .3s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-bottom-color: var(--gold);
-      box-shadow: 0 14px 35px rgba(10,30,48,.1);
-    }
-
-    .service-number {
-      color: var(--gold);
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 15px;
-    }
-
-    .service-card h3 {
-      color: var(--navy);
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      color: #6b7782;
-      font-size: 14px;
-    }
-
-    /* ABOUT */
-
-    .about { background: white; }
-
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-copy .eyebrow {
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    .about-copy h2 {
-      color: var(--navy);
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.4;
-      margin-bottom: 20px;
-    }
-
-    .about-copy p {
-      color: #66727e;
-      margin-bottom: 16px;
-    }
-
-    .about-panel {
-      background: var(--navy);
-      color: white;
-      padding: 42px 35px;
-      border-top: 4px solid var(--gold);
-    }
-
-    .about-panel h3 {
-      color: var(--gold-light);
-      font-size: 23px;
-      margin-bottom: 18px;
-    }
-
-    .about-panel p {
-      color: #d1d9e0;
-      font-size: 15px;
-      margin-bottom: 13px;
-    }
-
-    /* INDUSTRIES */
-
-    .industries {
-      background: var(--navy);
-      color: white;
-    }
-
-    .industries .section-heading h2 { color: white; }
-    .industries .section-heading p { color: #b8c3cd; }
-
-    .industry-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .industry-item {
-      padding: 28px 24px;
-      border: 1px solid rgba(201,164,92,.35);
-      background: rgba(255,255,255,.035);
-      transition: .3s;
-    }
-
-    .industry-item:hover {
-      background: rgba(201,164,92,.1);
-      border-color: var(--gold);
-    }
-
-    .industry-item h3 {
-      color: var(--gold-light);
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .industry-item p {
-      color: #c3ccd5;
-      font-size: 14px;
-    }
-
-    /* TRAINING */
-
-    .training { background: var(--light-bg); }
-
-    .training-panel {
-      background: white;
-      padding: 42px;
-      border-left: 4px solid var(--gold);
-      box-shadow: 0 10px 35px rgba(10,30,48,.06);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 35px;
-    }
-
-    body.fa .training-panel {
-      border-left: 0;
-      border-right: 4px solid var(--gold);
-    }
-
-    .training-panel h3 {
-      color: var(--navy);
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-
-    .training-panel p {
-      color: #687581;
-      max-width: 720px;
-      margin-bottom: 14px;
-    }
-
-    .training-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .outline-button {
-      display: inline-block;
-      padding: 12px 22px;
-      color: var(--navy);
-      border: 1px solid var(--gold);
-      font-weight: 700;
-      transition: .25s;
-      text-align: center;
-    }
-
-    .outline-button:hover {
-      background: var(--navy);
-      color: white;
-    }
-
-    /* CONTACT */
-
-    .contact { background: white; }
-
-    .contact-panel {
-      background: var(--navy);
-      padding: 52px 35px;
-      text-align: center;
-      color: white;
-      border-top: 4px solid var(--gold);
-    }
-
-    .contact-panel h2 {
-      font-size: 32px;
-      margin-bottom: 15px;
-    }
-
-    .contact-panel > p {
-      color: #c6d0d9;
-      max-width: 700px;
-      margin: 0 auto 28px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 13px;
-      margin: 25px auto 30px;
-    }
-
-    .contact-link {
-      display: inline-block;
-      min-width: 190px;
-      padding: 12px 18px;
-      border: 1px solid var(--gold);
-      color: var(--gold-light);
-      font-weight: 600;
-      font-size: 14px;
-      transition: .25s;
-    }
-
-    .contact-link:hover {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .contact-panel .gold-button {
-      margin-top: 5px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: #fff;
-      color: #182635;
-      padding: 45px 0 22px;
-      border-top: 2px solid var(--gold);
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 35px;
-      padding-bottom: 30px;
-    }
-
-    .footer-logo img {
-      display: block;
-      width: 145px;
-      max-height: 90px;
-      object-fit: contain;
-    }
-
-    .footer-description {
-      max-width: 560px;
-      color: #526170;
-      font-size: 13px;
-    }
-
-    .footer-social {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 12px;
-      font-size: 13px;
-      color: #7a6338;
-      font-weight: 600;
-    }
-
-    .footer-social a:hover { text-decoration: underline; }
-
-    .copyright {
-      border-top: 1px solid #e5e5e5;
-      padding-top: 20px;
-      color: #687581;
-      text-align: center;
-      font-size: 12px;
-    }
-
-    /* RTL */
-
-    body.fa nav { direction: rtl; }
-    body.fa .hero-content { align-items: flex-start; }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 900px) {
-      .header-inner {
-        flex-wrap: wrap;
-        padding: 12px 0;
-      }
-
-      .brand img { width: 165px; }
-
-      .menu-button { display: block; }
-
-      nav {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 10px 0;
-      }
-
-      nav.open { display: flex; }
-
-      nav a {
-        padding: 11px 5px;
-        border-top: 1px solid #e5e5e5;
-      }
-
-      .service-grid { grid-template-columns: repeat(2, 1fr); }
-
-      .about-layout {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-
-      .industry-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 600px) {
-      .hero {
-        min-height: 590px;
-        height: 78vh;
-      }
-
-      .hero-content { min-height: 590px; }
-
-      .hero h1 { font-size: 34px; }
-      .hero p { font-size: 14px; }
-
-      section { padding: 65px 0; }
-
-      .service-grid, .industry-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .training-panel {
-        padding: 28px 22px;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .training-panel .gold-button,
-      .training-panel .outline-button {
-        width: 100%;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .contact-panel { padding: 38px 20px; }
-      .contact-panel h2 { font-size: 25px; }
-
-      .contact-link { width: 100%; }
-      .training-links { flex-direction: column; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#091725">
+<meta name="description" content="RAMON GROUP – International Project Services: Project Controls, Planning, Scheduling, Consulting and Professional Training.">
+<title>RAMON GROUP | International Project Services</title>
+<link rel="icon" type="image/png" href="ramon-profile.png">
+<link rel="apple-touch-icon" href="ramon-profile.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{--navy:#091725;--navy2:#12283b;--gold:#c9a45c;--gold2:#e2c787;--white:#fff;--ink:#182635;--muted:#66727e;--light:#f5f6f7}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Vazirmatn,sans-serif;color:var(--ink);line-height:1.8;background:#fff}
+body.fa{font-family:Vazirmatn,sans-serif;direction:rtl;text-align:right}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1160px,90%);margin:auto}
+
+header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:2px solid var(--gold);box-shadow:0 5px 24px #0917250b}
+.header-inner{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand img{display:block;width:150px;height:72px;object-fit:contain}
+nav{display:flex;align-items:center;gap:24px}
+nav a{font-size:13px;font-weight:700;color:var(--navy);transition:.2s}
+nav a:hover{color:#a47c32}
+.header-actions{display:flex;align-items:center;gap:10px}
+.language-button,.menu-button{background:#fff;color:var(--navy);border:1px solid var(--gold);padding:8px 13px;border-radius:3px;font-weight:700;cursor:pointer}
+.menu-button{display:none}
+
+.hero{height:min(78vh,760px);min-height:640px;position:relative;overflow:hidden;background:var(--navy);isolation:isolate}
+.slides,.slide{position:absolute;inset:0}
+.slide{opacity:0;visibility:hidden;transition:opacity 1s ease,visibility 1s}
+.slide.active{opacity:1;visibility:visible}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.hero:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,17,29,.93),rgba(5,17,29,.68) 58%,rgba(5,17,29,.22))}
+body.fa .hero:after{background:linear-gradient(-90deg,rgba(5,17,29,.93),rgba(5,17,29,.68) 58%,rgba(5,17,29,.22))}
+.hero-content{position:relative;z-index:2;height:100%;min-height:640px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;color:#fff;padding-top:25px;padding-bottom:65px}
+.eyebrow{color:var(--gold2);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+body.fa .eyebrow{letter-spacing:0;font-size:14px}
+.hero h1{font-size:clamp(32px,5vw,60px);line-height:1.3;max-width:850px;margin-bottom:20px;font-weight:800}
+.hero p{max-width:780px;color:#e1e7ed;font-size:16px;line-height:2;margin-bottom:28px}
+.gold-button{display:inline-block;background:var(--gold);color:var(--navy);border:1px solid var(--gold);padding:12px 25px;font-size:13px;font-weight:800;transition:.25s}
+.gold-button:hover{background:transparent;color:var(--gold2)}
+.slide-controls{position:absolute;z-index:3;bottom:28px;left:5%;display:flex;align-items:center;gap:12px}
+body.fa .slide-controls{left:auto;right:5%}
+.slide-arrow{width:38px;height:38px;border:1px solid #ffffff99;background:#09172577;color:#fff;cursor:pointer;font-size:21px}
+.slide-arrow:hover{background:var(--gold);color:var(--navy)}
+.slide-dots{display:flex;gap:8px}
+.slide-dot{width:9px;height:9px;border:0;border-radius:50%;background:#ffffff80;cursor:pointer}
+.slide-dot.active{background:var(--gold2);transform:scale(1.3)}
+
+section{padding:88px 0;scroll-margin-top:86px}
+.section-heading{text-align:center;max-width:780px;margin:0 auto 48px}
+.section-heading .eyebrow{display:block;margin-bottom:10px}
+.section-heading h2{font-size:clamp(27px,4vw,39px);color:var(--navy);line-height:1.4;margin-bottom:12px}
+.section-heading p{color:var(--muted);font-size:15px}
+.services,.training{background:var(--light)}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.service-card{background:#fff;padding:30px 23px;border-bottom:3px solid transparent;box-shadow:0 8px 30px #0a1e300d;transition:.25s}
+.service-card:hover{transform:translateY(-6px);border-bottom-color:var(--gold)}
+.service-number{font-size:27px;font-weight:800;color:var(--gold);margin-bottom:12px}
+.service-card h3{font-size:17px;color:var(--navy);margin-bottom:10px}
+.service-card p,.industry-item p{font-size:14px;color:#6b7782}
+
+.about-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}
+.about-copy .eyebrow{display:block}
+.about-copy h2{font-size:clamp(28px,4vw,40px);line-height:1.4;color:var(--navy);margin-bottom:18px}
+.about-copy p{color:var(--muted);margin-bottom:15px}
+.about-panel{background:var(--navy);color:#fff;padding:42px 35px;border-top:4px solid var(--gold)}
+.about-panel h3{font-size:23px;color:var(--gold2);margin-bottom:16px}
+.about-panel p{color:#d1d9e0;margin-bottom:12px}
+
+.industries{background:var(--navy);color:#fff}
+.industries .section-heading h2{color:#fff}
+.industries .section-heading p{color:#b8c3cd}
+.industry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.industry-item{padding:27px 23px;border:1px solid #c9a45c59;background:#ffffff09;transition:.25s}
+.industry-item:hover{border-color:var(--gold);background:#c9a45c1a}
+.industry-item h3{font-size:17px;color:var(--gold2);margin-bottom:8px}
+
+.training-panel{background:#fff;padding:42px;border-left:4px solid var(--gold);box-shadow:0 10px 35px #0a1e300d;display:flex;align-items:center;justify-content:space-between;gap:30px}
+body.fa .training-panel{border-left:0;border-right:4px solid var(--gold)}
+.training-panel h3{font-size:24px;color:var(--navy);margin-bottom:10px}
+.training-panel p{color:var(--muted);max-width:720px}
+.training-actions{display:flex;flex-wrap:wrap;gap:10px;flex-shrink:0}
+.outline-button{display:inline-block;border:1px solid var(--gold);color:var(--navy);padding:11px 20px;font-size:13px;font-weight:800;transition:.2s}
+.outline-button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+.contact{background:#fff}
+.contact-panel{background:var(--navy);padding:48px 30px;text-align:center;color:#fff;border-top:4px solid var(--gold)}
+.contact-panel h2{font-size:clamp(25px,4vw,32px);margin-bottom:12px}
+.contact-panel>p{color:#c6d0d9;max-width:700px;margin:0 auto 25px}
+.contact-links{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;margin:25px 0 8px}
+.contact-link{display:inline-block;padding:11px 18px;border:1px solid #c9a45c;color:var(--gold2);font-weight:700;font-size:14px;transition:.2s}
+.contact-link:hover{background:var(--gold);color:var(--navy)}
+.contact-note{font-size:13px;color:#aebbc7;margin-top:17px}
+
+footer{background:#fff;color:var(--ink);padding:38px 0 20px;border-top:2px solid var(--gold)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:28px;padding-bottom:25px}
+.footer-logo img{width:145px;height:75px;object-fit:contain}
+.footer-description{max-width:520px;color:#526170;font-size:13px}
+.footer-social{display:flex;gap:12px;flex-wrap:wrap}
+.footer-social a{font-size:13px;font-weight:700;color:var(--navy);border-bottom:1px solid var(--gold)}
+.copyright{border-top:1px solid #e5e5e5;padding-top:17px;color:#687581;text-align:center;font-size:12px}
+
+body.fa nav{direction:rtl}
+body.fa .hero-content{align-items:flex-start}
+
+@media(max-width:900px){
+.header-inner{flex-wrap:wrap;padding:9px 0}
+.brand img{width:130px}
+.menu-button{display:block}
+nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;padding:8px 0}
+nav.open{display:flex}
+nav a{padding:10px 5px;border-top:1px solid #09172512}
+.service-grid{grid-template-columns:repeat(2,1fr)}
+.about-layout{grid-template-columns:1fr;gap:30px}
+.industry-grid{grid-template-columns:repeat(2,1fr)}
+.training-panel{align-items:flex-start;flex-direction:column}
+.footer-inner{flex-wrap:wrap}
+}
+
+@media(max-width:600px){
+.hero{min-height:590px;height:78vh}
+.hero-content{min-height:590px}
+.hero h1{font-size:34px}
+.hero p{font-size:14px}
+.eyebrow{font-size:11px}
+section{padding:65px 0}
+.service-grid,.industry-grid{grid-template-columns:1fr}
+.training-panel{padding:28px 22px}
+.training-actions{width:100%}
+.training-actions a{width:100%;text-align:center}
+.contact-panel{padding:38px 20px}
+.contact-links{flex-direction:column}
+.contact-link{width:100%;max-width:330px}
+.footer-inner{flex-direction:column;align-items:flex-start}
+.footer-social{gap:15px}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="container header-inner">
-
-      <a class="brand" href="#home" aria-label="RAMON GROUP">
-        <img src="ramon-profile.png" alt="RAMON GROUP">
-      </a>
-
-      <nav id="mainNav">
-        <a href="#home" data-en="Home" data-fa="خانه">Home</a>
-        <a href="#services" data-en="Services" data-fa="خدمات">Services</a>
-        <a href="#about" data-en="About Us" data-fa="درباره ما">About Us</a>
-        <a href="#industries" data-en="Industries" data-fa="صنایع">Industries</a>
-        <a href="#training" data-en="Training" data-fa="آموزش">Training</a>
-        <a href="#contact" data-en="Contact" data-fa="تماس با ما">Contact</a>
-      </nav>
-
-      <div class="header-actions">
-        <button class="language-button" id="languageButton" type="button">فارسی</button>
-        <button class="menu-button" id="menuButton" type="button" aria-label="Menu">☰</button>
-      </div>
-
-    </div>
-  </header>
-
-  <main id="home">
-
-    <!-- HERO SLIDESHOW -->
-    <section class="hero" aria-label="RAMON GROUP introduction">
-
-      <div class="slides">
-
-        <!-- Slide 1: Oil, Refining and Petrochemical -->
-        <div class="slide active">
-          <img src="Slide1.jpg" alt="Oil refining and petrochemical facilities" fetchpriority="high">
-        </div>
-
-        <!-- Slide 2: Buildings and Construction -->
-        <div class="slide">
-          <img src="Slide3.jpg" alt="Building and civil engineering projects" loading="lazy">
-        </div>
-
-        <!-- Slide 3: Roads and Infrastructure -->
-        <div class="slide">
-          <img src="Slide4.jpg" alt="Road construction and infrastructure projects" loading="lazy">
-        </div>
-
-        <!-- Slide 4: Gas Transmission and Facilities -->
-        <div class="slide">
-          <img src="Slide2.jpg" alt="Gas transmission pipelines and facilities" loading="lazy">
-        </div>
-
-      </div>
-
-      <div class="container hero-content">
-
-        <span class="eyebrow" id="heroEyebrow">
-          PROJECT CONSULTING & SCHEDULING
-        </span>
-
-        <h1 id="heroTitle">
-          Project Consulting & Scheduling for Oil, Refining and Petrochemical Projects
-        </h1>
-
-        <p id="heroDescription">
-          Professional project management consultancy, project scheduling, tender schedule documentation, progress monitoring and project controls for oil, refining and petrochemical developments.
-        </p>
-
-        <a href="#services" class="gold-button"
-           data-en="EXPLORE OUR SERVICES"
-           data-fa="مشاهده خدمات ما">
-          EXPLORE OUR SERVICES
-        </a>
-
-      </div>
-
-      <div class="slide-controls">
-        <button class="slide-arrow" id="prevSlide" type="button" aria-label="Previous slide">‹</button>
-
-        <div class="slide-dots" id="slideDots">
-          <button class="slide-dot active" type="button" aria-label="Slide 1"></button>
-          <button class="slide-dot" type="button" aria-label="Slide 2"></button>
-          <button class="slide-dot" type="button" aria-label="Slide 3"></button>
-          <button class="slide-dot" type="button" aria-label="Slide 4"></button>
-        </div>
-
-        <button class="slide-arrow" id="nextSlide" type="button" aria-label="Next slide">›</button>
-      </div>
-
-    </section>
-
-    <!-- SERVICES -->
-    <section class="services" id="services">
-      <div class="container">
-
-        <div class="section-heading">
-          <span class="eyebrow"
-            data-en="WHAT WE DO"
-            data-fa="حوزه فعالیت ما">WHAT WE DO</span>
-
-          <h2 data-en="Our Professional Services" data-fa="خدمات تخصصی ما">
-            Our Professional Services
-          </h2>
-
-          <p
-            data-en="Integrated solutions designed to improve project performance, control, contractual management and delivery."
-            data-fa="راهکارهای یکپارچه برای ارتقای عملکرد، کنترل، مدیریت قراردادی و تحویل موفق پروژه‌ها.">
-            Integrated solutions designed to improve project performance, control, contractual management and delivery.
-          </p>
-        </div>
-
-        <div class="service-grid">
-
-          <article class="service-card">
-            <div class="service-number">01</div>
-            <h3 data-en="Project Controls" data-fa="کنترل پروژه">Project Controls</h3>
-            <p
-              data-en="Development and implementation of project control systems, performance monitoring, progress measurement and management reporting."
-              data-fa="طراحی و استقرار سیستم‌های کنترل پروژه، پایش عملکرد، اندازه‌گیری پیشرفت و گزارش‌دهی مدیریتی.">
-              Development and implementation of project control systems, performance monitoring, progress measurement and management reporting.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">02</div>
-            <h3 data-en="Planning & Scheduling" data-fa="برنامه‌ریزی و زمان‌بندی">Planning & Scheduling</h3>
-            <p
-              data-en="Project planning, preparation and development of schedules, tender schedule documentation, progress measurement and delay analysis."
-              data-fa="برنامه‌ریزی پروژه، تهیه و تدوین برنامه‌های زمان‌بندی، اسناد مناقصه، اندازه‌گیری پیشرفت و تحلیل تأخیرات.">
-              Project planning, preparation and development of schedules, tender schedule documentation, progress measurement and delay analysis.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">03</div>
-            <h3 data-en="Project Consulting" data-fa="مشاوره مدیریت پروژه">Project Consulting</h3>
-            <p
-              data-en="Practical consulting solutions for project management, execution strategies, organizational processes and project delivery challenges."
-              data-fa="ارائه راهکارهای مشاوره‌ای کاربردی در مدیریت پروژه، راهبردهای اجرا، فرآیندهای سازمانی و چالش‌های تحویل پروژه.">
-              Practical consulting solutions for project management, execution strategies, organizational processes and project delivery challenges.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">04</div>
-            <h3 data-en="Claims Management" data-fa="مدیریت ادعا">Claims Management</h3>
-            <p
-              data-en="Identification, assessment and documentation of contractual claims, delay analysis, Extension of Time (EOT) preparation, and evaluation of time and cost impacts."
-              data-fa="شناسایی، بررسی و مستندسازی ادعاهای قراردادی، تحلیل تأخیرات، تهیه مستندات تمدید مدت پیمان (EOT) و ارزیابی آثار زمانی و هزینه‌ای تغییرات و تأخیرات.">
-              Identification, assessment and documentation of contractual claims, delay analysis, Extension of Time (EOT) preparation, and evaluation of time and cost impacts.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">05</div>
-            <h3 data-en="Contractual Support" data-fa="پشتیبانی قراردادی">Contractual Support</h3>
-            <p
-              data-en="Support in contractual correspondence, variation assessment, claim substantiation, negotiations and project dispute resolution."
-              data-fa="پشتیبانی در مکاتبات قراردادی، بررسی تغییرات، مستندسازی ادعاها، مذاکرات قراردادی و حل‌وفصل اختلافات پروژه.">
-              Support in contractual correspondence, variation assessment, claim substantiation, negotiations and project dispute resolution.
-            </p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-number">06</div>
-            <h3 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h3>
-            <p
-              data-en="Practical training programs in project controls, planning, scheduling, claims management and project management."
-              data-fa="دوره‌های آموزشی کاربردی در حوزه کنترل پروژه، برنامه‌ریزی، زمان‌بندی، مدیریت ادعا و مدیریت پروژه.">
-              Practical training programs in project controls, planning, scheduling, claims management and project management.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="about" id="about">
-      <div class="container about-layout">
-
-        <div class="about-copy">
-          <span class="eyebrow"
-            data-en="WHO WE ARE"
-            data-fa="درباره رامون گروپ">WHO WE ARE</span>
-
-          <h2
-            data-en="A Strategic Partner for Project Excellence"
-            data-fa="همراهی راهبردی برای تعالی پروژه‌ها">
-            A Strategic Partner for Project Excellence
-          </h2>
-
-          <p
-            data-en="RAMON GROUP is focused on delivering professional project services through structured methodologies, practical expertise and a commitment to quality."
-            data-fa="رامون گروپ با تمرکز بر ارائه خدمات حرفه‌ای پروژه، از طریق روش‌های ساختاریافته، دانش کاربردی و تعهد به کیفیت فعالیت می‌کند.">
-            RAMON GROUP is focused on delivering professional project services through structured methodologies, practical expertise and a commitment to quality.
-          </p>
-
-          <p
-            data-en="Our approach combines project controls, planning, scheduling, claims management, consulting and professional development to support better decisions and more effective project delivery."
-            data-fa="رویکرد ما با تلفیق کنترل پروژه، برنامه‌ریزی، زمان‌بندی، مدیریت ادعا، مشاوره و توسعه حرفه‌ای، به تصمیم‌گیری بهتر و اجرای اثربخش‌تر پروژه‌ها کمک می‌کند.">
-            Our approach combines project controls, planning, scheduling, claims management, consulting and professional development to support better decisions and more effective project delivery.
-          </p>
-        </div>
-
-        <div class="about-panel">
-          <h3 data-en="Our Commitment" data-fa="تعهد ما">Our Commitment</h3>
-
-          <p data-en="Excellence in every project." data-fa="تعالی در تمام مراحل پروژه.">
-            Excellence in every project.
-          </p>
-
-          <p data-en="Integrity in every partnership." data-fa="صداقت در هر همکاری.">
-            Integrity in every partnership.
-          </p>
-
-          <p data-en="Knowledge in every solution." data-fa="دانش در هر راهکار.">
-            Knowledge in every solution.
-          </p>
-
-          <p data-en="Value in every delivery." data-fa="خلق ارزش در تحویل هر پروژه.">
-            Value in every delivery.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- INDUSTRIES -->
-    <section class="industries" id="industries">
-      <div class="container">
-
-        <div class="section-heading">
-          <span class="eyebrow"
-            data-en="OUR EXPERTISE"
-            data-fa="حوزه‌های تخصصی">OUR EXPERTISE</span>
-
-          <h2 data-en="Industries We Serve" data-fa="صنایع و حوزه‌های فعالیت">
-            Industries We Serve
-          </h2>
-
-          <p
-            data-en="Supporting complex projects across key industrial and infrastructure sectors."
-            data-fa="پشتیبانی از پروژه‌های پیچیده در بخش‌های مهم صنعتی و زیرساختی.">
-            Supporting complex projects across key industrial and infrastructure sectors.
-          </p>
-        </div>
-
-        <div class="industry-grid">
-
-          <article class="industry-item">
-            <h3 data-en="Oil & Refining" data-fa="نفت و پالایش">Oil & Refining</h3>
-            <p
-              data-en="Project services for oil production, refining facilities and downstream developments."
-              data-fa="خدمات پروژه برای طرح‌های تولید نفت، تأسیسات پالایشگاهی و صنایع پایین‌دستی.">
-              Project services for oil production, refining facilities and downstream developments.
-            </p>
-          </article>
-
-          <article class="industry-item">
-            <h3 data-en="Gas Transmission" data-fa="انتقال گاز">Gas Transmission</h3>
-            <p
-              data-en="Planning and project controls for gas pipelines, launcher and receiver stations and gas pressure boosting facilities."
-              data-fa="برنامه‌ریزی و کنترل پروژه خطوط انتقال گاز، ایستگاه‌های لانچر و رسیور و تأسیسات تقویت فشار گاز.">
-              Planning and project controls for gas pipelines, launcher and receiver stations and gas pressure boosting facilities.
-            </p>
-          </article>
-
-          <article class="industry-item">
-            <h3 data-en="Petrochemical" data-fa="پتروشیمی">Petrochemical</h3>
-            <p
-              data-en="Planning and project control solutions for petrochemical plants and facilities."
-              data-fa="راهکارهای برنامه‌ریزی و کنترل پروژه برای مجتمع‌ها و تأسیسات پتروشیمی.">
-              Planning and project control solutions for petrochemical plants and facilities.
-            </p>
-          </article>
-
-          <article class="industry-item">
-            <h3 data-en="Buildings & Construction" data-fa="ساختمان و ابنیه">Buildings & Construction</h3>
-            <p
-              data-en="Project planning and monitoring for residential, commercial, administrative and industrial buildings."
-              data-fa="برنامه‌ریزی و پایش پروژه‌های ساختمانی، مسکونی، تجاری، اداری و صنعتی.">
-              Project planning and monitoring for residential, commercial, administrative and industrial buildings.
-            </p>
-          </article>
-
-          <article class="industry-item">
-            <h3 data-en="Roads & Transportation" data-fa="راه‌سازی و حمل‌ونقل">Roads & Transportation</h3>
-            <p
-              data-en="Project controls for road construction, highways, freeways and transportation infrastructure."
-              data-fa="کنترل پروژه طرح‌های راه‌سازی، بزرگراه‌ها، آزادراه‌ها و زیرساخت‌های حمل‌ونقل.">
-              Project controls for road construction, highways, freeways and transportation infrastructure.
-            </p>
-          </article>
-
-          <article class="industry-item">
-            <h3 data-en="Industrial Projects" data-fa="پروژه‌های صنعتی">Industrial Projects</h3>
-            <p
-              data-en="Integrated project support for complex industrial and engineering developments."
-              data-fa="پشتیبانی یکپارچه از طرح‌ها و پروژه‌های پیچیده صنعتی و مهندسی.">
-              Integrated project support for complex industrial and engineering developments.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- TRAINING -->
-    <section class="training" id="training">
-      <div class="container">
-
-        <div class="section-heading">
-          <span class="eyebrow"
-            data-en="KNOWLEDGE & DEVELOPMENT"
-            data-fa="دانش و توسعه">KNOWLEDGE & DEVELOPMENT</span>
-
-          <h2 data-en="Professional Training" data-fa="آموزش‌های تخصصی">
-            Professional Training
-          </h2>
-
-          <p
-            data-en="Practical learning for project professionals and the next generation of specialists."
-            data-fa="یادگیری کاربردی برای متخصصان پروژه و نسل آینده کارشناسان حرفه‌ای.">
-            Practical learning for project professionals and the next generation of specialists.
-          </p>
-        </div>
-
-        <div class="training-panel">
-
-          <div>
-            <h3
-              data-en="Developing Skills. Empowering Professionals."
-              data-fa="توسعه مهارت‌ها؛ توانمندسازی متخصصان.">
-              Developing Skills. Empowering Professionals.
-            </h3>
-
-            <p
-              data-en="Our training approach focuses on practical knowledge and professional capabilities in project controls, planning, scheduling, claims management and project management."
-              data-fa="رویکرد آموزشی ما بر دانش کاربردی و توانمندی‌های حرفه‌ای در حوزه کنترل پروژه، برنامه‌ریزی، زمان‌بندی، مدیریت ادعا و مدیریت پروژه تمرکز دارد.">
-              Our training approach focuses on practical knowledge and professional capabilities in project controls, planning, scheduling, claims management and project management.
-            </p>
-
-            <p
-              data-en="Join our educational channel to access training announcements, professional insights and learning content."
-              data-fa="برای اطلاع از برنامه‌های آموزشی، مطالب تخصصی و محتوای یادگیری به کانال آموزشی ما بپیوندید.">
-              Join our educational channel to access training announcements, professional insights and learning content.
-            </p>
-
-            <div class="training-links">
-              <a class="gold-button"
-                 href="https://ble.ir/learning_planning"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 data-en="JOIN OUR BALE CHANNEL"
-                 data-fa="عضویت در کانال آموزشی بله">
-                JOIN OUR BALE CHANNEL
-              </a>
-
-              <a class="outline-button"
-                 href="#contact"
-                 data-en="COURSE & TRAINING INQUIRIES"
-                 data-fa="درخواست اطلاعات دوره‌ها">
-                COURSE & TRAINING INQUIRIES
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-      <div class="container">
-
-        <div class="contact-panel">
-
-          <h2
-            data-en="Let's Build Better Projects Together"
-            data-fa="برای ساخت پروژه‌هایی بهتر، همراه شویم">
-            Let's Build Better Projects Together
-          </h2>
-
-          <p
-            data-en="Connect with RAMON GROUP to discuss project services, claims management, consulting and professional training opportunities."
-            data-fa="برای گفت‌وگو درباره خدمات پروژه، مدیریت ادعا، مشاوره و فرصت‌های آموزش تخصصی با رامون گروپ در ارتباط باشید.">
-            Connect with RAMON GROUP to discuss project services, claims management, consulting and professional training opportunities.
-          </p>
-
-          <div class="contact-links">
-
-            <a class="contact-link" href="tel:+989129439104">
-              <span data-en="Mobile: " data-fa="موبایل: ">Mobile: </span>
-              +98 912 943 9104
-            </a>
-
-            <a class="contact-link"
-               href="https://wa.me/989129439104"
-               target="_blank"
-               rel="noopener noreferrer">
-              WhatsApp
-            </a>
-
-            <a class="contact-link"
-               href="https://www.linkedin.com/in/ramin-mehdizadeh-634a57381"
-               target="_blank"
-               rel="noopener noreferrer">
-              LinkedIn
-            </a>
-
-            <a class="contact-link"
-               href="https://ble.ir/learning_planning"
-               target="_blank"
-               rel="noopener noreferrer">
-              <span data-en="Bale Channel" data-fa="کانال بله">Bale Channel</span>
-            </a>
-
-          </div>
-
-          <a href="#home" class="gold-button"
-             data-en="BACK TO TOP"
-             data-fa="بازگشت به بالا">
-            BACK TO TOP
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-
-      <div class="footer-inner">
-
-        <a class="footer-logo" href="#home" aria-label="RAMON GROUP">
-          <img src="ramon-profile.png" alt="RAMON GROUP">
-        </a>
-
-        <div>
-          <p class="footer-description"
-            data-en="RAMON GROUP — INTERNATIONAL PROJECT SERVICES. Project Controls, Planning, Scheduling, Claims Management, Consulting and Professional Training."
-            data-fa="رامون گروپ — خدمات بین‌المللی پروژه. کنترل پروژه، برنامه‌ریزی، زمان‌بندی، مدیریت ادعا، مشاوره و آموزش تخصصی.">
-            RAMON GROUP — INTERNATIONAL PROJECT SERVICES. Project Controls, Planning, Scheduling, Claims Management, Consulting and Professional Training.
-          </p>
-
-          <div class="footer-social">
-            <a href="https://www.linkedin.com/in/ramin-mehdizadeh-634a57381"
-               target="_blank" rel="noopener noreferrer">LinkedIn</a>
-
-            <a href="https://ble.ir/learning_planning"
-               target="_blank" rel="noopener noreferrer">Bale</a>
-
-            <a href="https://wa.me/989129439104"
-               target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="copyright"
-        data-en="© 2026 RAMON GROUP. All Rights Reserved."
-        data-fa="© ۲۰۲۶ رامون گروپ. تمامی حقوق محفوظ است.">
-        © 2026 RAMON GROUP. All Rights Reserved.
-      </div>
-
-    </div>
-  </footer>
-
-  <script>
-    // HERO SLIDE CONTENT - ENGLISH AND PERSIAN
-
-    const slideContent = [
-      {
-        eyebrow: {
-          en: "PROJECT CONSULTING & SCHEDULING",
-          fa: "مشاوره و برنامه‌ریزی پروژه"
-        },
-        title: {
-          en: "Project Consulting & Scheduling for Oil, Refining and Petrochemical Projects",
-          fa: "مشاوره و برنامه‌ریزی پروژه‌های نفت، پالایش و پتروشیمی"
-        },
-        description: {
-          en: "Professional project management consultancy, project scheduling, tender schedule documentation, progress monitoring and project controls for oil, refining and petrochemical developments.",
-          fa: "ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های نفتی، پالایشگاهی و پتروشیمی، متناسب با الزامات کارفرما."
-        }
-      },
-      {
-        eyebrow: {
-          en: "BUILDING & CONSTRUCTION PROJECTS",
-          fa: "پروژه‌های ساختمانی و ابنیه"
-        },
-        title: {
-          en: "Project Consulting & Scheduling for Building and Construction Projects",
-          fa: "مشاوره و برنامه‌ریزی پروژه‌های ساختمانی و ابنیه"
-        },
-        description: {
-          en: "Project management consultancy, project schedules, tender schedule documentation and progress monitoring for residential, commercial, administrative and industrial building projects.",
-          fa: "ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های ساختمانی، مسکونی، تجاری، اداری و صنعتی، با تمرکز بر مدیریت زمان و هماهنگی فعالیت‌های اجرایی."
-        }
-      },
-      {
-        eyebrow: {
-          en: "ROAD & INFRASTRUCTURE PROJECTS",
-          fa: "پروژه‌های راه‌سازی و زیرساختی"
-        },
-        title: {
-          en: "Project Consulting & Scheduling for Road and Infrastructure Projects",
-          fa: "مشاوره و برنامه‌ریزی پروژه‌های راه‌سازی و زیرساختی"
-        },
-        description: {
-          en: "Project management consultancy, project schedules, tender schedule documentation and progress control for road construction, rehabilitation, highways, freeways and transportation infrastructure projects.",
-          fa: "ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های احداث، بهسازی و توسعه راه‌ها، بزرگراه‌ها، آزادراه‌ها و زیرساخت‌های حمل‌ونقل، با تمرکز بر مدیریت زمان و کنترل عملکرد اجرایی."
-        }
-      },
-      {
-        eyebrow: {
-          en: "GAS TRANSMISSION & FACILITIES",
-          fa: "خطوط انتقال گاز و تأسیسات"
-        },
-        title: {
-          en: "Project Consulting & Scheduling for Gas Transmission and Facilities",
-          fa: "مشاوره و برنامه‌ریزی پروژه‌های خطوط انتقال گاز و تأسیسات"
-        },
-        description: {
-          en: "Project management consultancy, project schedules, tender schedule documentation and progress control for gas transmission pipelines, launcher and receiver stations and gas pressure boosting facilities.",
-          fa: "ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های خطوط انتقال گاز، ایستگاه‌های لانچر و رسیور و تأسیسات تقویت فشار گاز، متناسب با ساختار سازمانی و الزامات سازمان توسعه گاز ایران."
-        }
-      }
-    ];
-
-    // LANGUAGE SWITCHER
-
-    const languageButton = document.getElementById("languageButton");
-    let currentLanguage = "en";
-
-    function updateHeroLanguage() {
-      const content = slideContent[currentSlide];
-
-      document.getElementById("heroEyebrow").textContent =
-        content.eyebrow[currentLanguage];
-
-      document.getElementById("heroTitle").textContent =
-        content.title[currentLanguage];
-
-      document.getElementById("heroDescription").textContent =
-        content.description[currentLanguage];
-    }
-
-    function setLanguage(language) {
-      currentLanguage = language;
-
-      document.documentElement.lang = language;
-      document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
-      document.body.classList.toggle("fa", language === "fa");
-
-      document.querySelectorAll("[data-en][data-fa]").forEach(element => {
-        element.textContent = element.getAttribute("data-" + language);
-      });
-
-      languageButton.textContent = language === "en" ? "فارسی" : "English";
-
-      document.title = language === "en"
-        ? "RAMON GROUP | International Project Services"
-        : "رامون گروپ | خدمات بین‌المللی پروژه";
-
-      updateHeroLanguage();
-    }
-
-    languageButton.addEventListener("click", () => {
-      setLanguage(currentLanguage === "en" ? "fa" : "en");
-    });
-
-    // MOBILE MENU
-
-    const menuButton = document.getElementById("menuButton");
-    const mainNav = document.getElementById("mainNav");
-
-    menuButton.addEventListener("click", () => {
-      mainNav.classList.toggle("open");
-    });
-
-    mainNav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("open");
-      });
-    });
-
-    // SLIDESHOW
-
-    const slides = Array.from(document.querySelectorAll(".slide"));
-    const dots = Array.from(document.querySelectorAll(".slide-dot"));
-    const prevButton = document.getElementById("prevSlide");
-    const nextButton = document.getElementById("nextSlide");
-
-    let currentSlide = 0;
-    let slideTimer;
-
-    function showSlide(index) {
-      currentSlide = (index + slides.length) % slides.length;
-
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === currentSlide);
-      });
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === currentSlide);
-      });
-
-      updateHeroLanguage();
-    }
-
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-    }
-
-    function previousSlide() {
-      showSlide(currentSlide - 1);
-    }
-
-    function restartTimer() {
-      clearInterval(slideTimer);
-      slideTimer = setInterval(nextSlide, 7000);
-    }
-
-    nextButton.addEventListener("click", () => {
-      nextSlide();
-      restartTimer();
-    });
-
-    prevButton.addEventListener("click", () => {
-      previousSlide();
-      restartTimer();
-    });
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
-        showSlide(index);
-        restartTimer();
-      });
-    });
-
-    restartTimer();
-    setLanguage("en");
-  </script>
+<header>
+<div class="container header-inner">
+<a class="brand" href="#home" aria-label="RAMON GROUP">
+<img src="ramon-profile.png" alt="RAMON GROUP">
+</a>
+
+<nav id="mainNav">
+<a href="#home" data-en="Home" data-fa="خانه">Home</a>
+<a href="#services" data-en="Services" data-fa="خدمات">Services</a>
+<a href="#about" data-en="About Us" data-fa="درباره ما">About Us</a>
+<a href="#industries" data-en="Industries" data-fa="صنایع">Industries</a>
+<a href="#training" data-en="Training" data-fa="آموزش">Training</a>
+<a href="#contact" data-en="Contact" data-fa="تماس با ما">Contact</a>
+</nav>
+
+<div class="header-actions">
+<button class="language-button" id="languageButton" type="button">فارسی</button>
+<button class="menu-button" id="menuButton" type="button" aria-label="Menu">☰</button>
+</div>
+</div>
+</header>
+
+<main id="home">
+
+<section class="hero" aria-label="RAMON GROUP introduction">
+
+<div class="slides">
+
+<!-- Slide 1: Oil, Refining and Petrochemical -->
+<div class="slide active">
+<img src="Slide1.jpg" alt="Oil refining and petrochemical facilities" fetchpriority="high">
+</div>
+
+<!-- Slide 2: Gas Transmission and Facilities -->
+<div class="slide">
+<img src="Slide2.jpg" alt="Gas transmission pipelines and facilities" loading="lazy">
+</div>
+
+<!-- Slide 3: Buildings and Construction -->
+<div class="slide">
+<img src="Slide3.jpg" alt="Building and civil construction projects" loading="lazy">
+</div>
+
+<!-- Slide 4: Road Construction -->
+<div class="slide">
+<img src="Slide4.jpg" alt="Road and transportation infrastructure" loading="lazy">
+</div>
+
+</div>
+
+<div class="container hero-content">
+<span class="eyebrow" id="slideEyebrow">PROJECT CONSULTING &amp; SCHEDULING</span>
+
+<h1 id="slideTitle">Oil, Refining &amp; Petrochemical Project Services</h1>
+
+<p id="slideDescription">Professional project management consulting, project scheduling and tender schedule documentation, development and updating of execution plans, and project progress monitoring for oil, refining and petrochemical projects.</p>
+
+<a href="#services" class="gold-button" data-en="EXPLORE OUR SERVICES" data-fa="مشاهده خدمات ما">EXPLORE OUR SERVICES</a>
+</div>
+
+<div class="slide-controls">
+<button class="slide-arrow" id="prevSlide" type="button" aria-label="Previous slide">‹</button>
+
+<div class="slide-dots" id="slideDots">
+<button class="slide-dot active" aria-label="Slide 1" type="button"></button>
+<button class="slide-dot" aria-label="Slide 2" type="button"></button>
+<button class="slide-dot" aria-label="Slide 3" type="button"></button>
+<button class="slide-dot" aria-label="Slide 4" type="button"></button>
+</div>
+
+<button class="slide-arrow" id="nextSlide" type="button" aria-label="Next slide">›</button>
+</div>
+
+</section>
+
+<section class="services" id="services">
+<div class="container">
+
+<div class="section-heading">
+<span class="eyebrow" data-en="WHAT WE DO" data-fa="حوزه فعالیت ما">WHAT WE DO</span>
+<h2 data-en="Our Professional Services" data-fa="خدمات تخصصی ما">Our Professional Services</h2>
+<p data-en="Integrated solutions designed to improve project performance, control and delivery." data-fa="راهکارهای یکپارچه برای ارتقای عملکرد، کنترل و تحویل موفق پروژه‌ها.">Integrated solutions designed to improve project performance, control and delivery.</p>
+</div>
+
+<div class="service-grid">
+
+<article class="service-card">
+<div class="service-number">01</div>
+<h3 data-en="Project Controls" data-fa="کنترل پروژه">Project Controls</h3>
+<p data-en="Project control systems, performance monitoring, progress measurement and management reporting." data-fa="طراحی و استقرار سیستم‌های کنترل پروژه، پایش عملکرد، اندازه‌گیری پیشرفت و گزارش‌دهی مدیریتی.">Project control systems, performance monitoring, progress measurement and management reporting.</p>
+</article>
+
+<article class="service-card">
+<div class="service-number">02</div>
+<h3 data-en="Planning & Scheduling" data-fa="برنامه‌ریزی و زمان‌بندی">Planning &amp; Scheduling</h3>
+<p data-en="Project planning, scheduling, tender schedule preparation, progress measurement and delay analysis." data-fa="برنامه‌ریزی پروژه، تهیه برنامه زمان‌بندی و اسناد مناقصه، اندازه‌گیری پیشرفت و تحلیل تأخیرات.">Project planning, scheduling, tender schedule preparation, progress measurement and delay analysis.</p>
+</article>
+
+<article class="service-card">
+<div class="service-number">03</div>
+<h3 data-en="Project Consulting" data-fa="مشاوره مدیریت پروژه">Project Consulting</h3>
+<p data-en="Practical consulting solutions for project management, execution and performance challenges." data-fa="ارائه راهکارهای مشاوره‌ای کاربردی برای چالش‌های مدیریت، اجرا و عملکرد پروژه.">Practical consulting solutions for project management, execution and performance challenges.</p>
+</article>
+
+<article class="service-card">
+<div class="service-number">04</div>
+<h3 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h3>
+<p data-en="Practical learning programs in project controls, planning, scheduling and project management." data-fa="برنامه‌های آموزشی کاربردی در حوزه کنترل پروژه، برنامه‌ریزی، زمان‌بندی و مدیریت پروژه.">Practical learning programs in project controls, planning, scheduling and project management.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="container about-layout">
+
+<div class="about-copy">
+<span class="eyebrow" data-en="WHO WE ARE" data-fa="درباره رامون گروپ">WHO WE ARE</span>
+
+<h2 data-en="A Strategic Partner for Project Excellence" data-fa="همراهی راهبردی برای تعالی پروژه‌ها">A Strategic Partner for Project Excellence</h2>
+
+<p data-en="RAMON GROUP is focused on delivering professional project services through structured methodologies, practical expertise and a commitment to quality." data-fa="رامون گروپ با تمرکز بر ارائه خدمات حرفه‌ای پروژه، از طریق روش‌های ساختاریافته، دانش کاربردی و تعهد به کیفیت فعالیت می‌کند.">RAMON GROUP is focused on delivering professional project services through structured methodologies, practical expertise and a commitment to quality.</p>
+
+<p data-en="Our approach combines project controls, planning, consulting and professional development to support better decisions and more effective project delivery." data-fa="رویکرد ما با تلفیق کنترل پروژه، برنامه‌ریزی، مشاوره و توسعه حرفه‌ای، به تصمیم‌گیری بهتر و اجرای اثربخش‌تر پروژه‌ها کمک می‌کند.">Our approach combines project controls, planning, consulting and professional development to support better decisions and more effective project delivery.</p>
+</div>
+
+<div class="about-panel">
+<h3 data-en="Our Commitment" data-fa="تعهد ما">Our Commitment</h3>
+<p data-en="Excellence in every project." data-fa="تعالی در تمام مراحل پروژه.">Excellence in every project.</p>
+<p data-en="Integrity in every partnership." data-fa="صداقت در هر همکاری.">Integrity in every partnership.</p>
+<p data-en="Knowledge in every solution." data-fa="دانش در هر راهکار.">Knowledge in every solution.</p>
+</div>
+
+</div>
+</section>
+
+<section class="industries" id="industries">
+<div class="container">
+
+<div class="section-heading">
+<span class="eyebrow" data-en="OUR EXPERTISE" data-fa="حوزه‌های تخصصی">OUR EXPERTISE</span>
+<h2 data-en="Industries We Serve" data-fa="صنایع و حوزه‌های فعالیت">Industries We Serve</h2>
+<p data-en="Supporting complex projects across key industrial and infrastructure sectors." data-fa="پشتیبانی از پروژه‌های پیچیده در بخش‌های مهم صنعتی و زیرساختی.">Supporting complex projects across key industrial and infrastructure sectors.</p>
+</div>
+
+<div class="industry-grid">
+
+<article class="industry-item">
+<h3 data-en="Oil & Refining" data-fa="نفت و پالایش">Oil &amp; Refining</h3>
+<p data-en="Project services for oil production, refining and related facilities." data-fa="خدمات پروژه برای طرح‌های تولید نفت، پالایش و تأسیسات وابسته.">Project services for oil production, refining and related facilities.</p>
+</article>
+
+<article class="industry-item">
+<h3 data-en="Gas Transmission" data-fa="انتقال گاز">Gas Transmission</h3>
+<p data-en="Planning and control for gas pipelines, launcher/receiver stations and pressure boosting facilities." data-fa="برنامه‌ریزی و کنترل خطوط انتقال گاز، ایستگاه‌های لانچر و رسیور و تأسیسات تقویت فشار.">Planning and control for gas pipelines, launcher/receiver stations and pressure boosting facilities.</p>
+</article>
+
+<article class="industry-item">
+<h3 data-en="Petrochemical" data-fa="پتروشیمی">Petrochemical</h3>
+<p data-en="Planning and project control solutions for petrochemical facilities." data-fa="راهکارهای برنامه‌ریزی و کنترل پروژه برای تأسیسات پتروشیمی.">Planning and project control solutions for petrochemical facilities.</p>
+</article>
+
+<article class="industry-item">
+<h3 data-en="Buildings & Civil Works" data-fa="ساختمان و ابنیه">Buildings &amp; Civil Works</h3>
+<p data-en="Planning and monitoring for residential, commercial, administrative and industrial construction." data-fa="برنامه‌ریزی و پایش پروژه‌های ساختمانی، مسکونی، تجاری، اداری و صنعتی.">Planning and monitoring for residential, commercial, administrative and industrial construction.</p>
+</article>
+
+<article class="industry-item">
+<h3 data-en="Roads & Transportation" data-fa="راه‌سازی و حمل‌ونقل">Roads &amp; Transportation</h3>
+<p data-en="Project controls for roads, highways, freeways and transportation infrastructure." data-fa="کنترل پروژه طرح‌های احداث، بهسازی و توسعه راه‌ها، بزرگراه‌ها و زیرساخت‌های حمل‌ونقل.">Project controls for roads, highways, freeways and transportation infrastructure.</p>
+</article>
+
+<article class="industry-item">
+<h3 data-en="Industrial Projects" data-fa="پروژه‌های صنعتی">Industrial Projects</h3>
+<p data-en="Integrated project support for complex industrial developments." data-fa="پشتیبانی یکپارچه از طرح‌ها و پروژه‌های پیچیده صنعتی.">Integrated project support for complex industrial developments.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section class="training" id="training">
+<div class="container">
+
+<div class="section-heading">
+<span class="eyebrow" data-en="KNOWLEDGE & DEVELOPMENT" data-fa="دانش و توسعه">KNOWLEDGE &amp; DEVELOPMENT</span>
+<h2 data-en="Professional Training" data-fa="آموزش‌های تخصصی">Professional Training</h2>
+<p data-en="Practical learning and professional development for project specialists." data-fa="یادگیری کاربردی و توسعه حرفه‌ای برای متخصصان پروژه.">Practical learning and professional development for project specialists.</p>
+</div>
+
+<div class="training-panel">
+
+<div>
+<h3 data-en="Developing Skills. Empowering Professionals." data-fa="توسعه مهارت‌ها؛ توانمندسازی متخصصان.">Developing Skills. Empowering Professionals.</h3>
+<p data-en="Explore practical courses and educational content in project controls, planning, scheduling and project management. Follow our Bale channel for training announcements, learning materials and updates." data-fa="دوره‌ها و محتوای آموزشی کاربردی در حوزه کنترل پروژه، برنامه‌ریزی، زمان‌بندی و مدیریت پروژه را دنبال کنید. برای اطلاع از دوره‌ها، دریافت مطالب آموزشی و تازه‌ترین محتوا به کانال بله ما بپیوندید.">Explore practical courses and educational content in project controls, planning, scheduling and project management. Follow our Bale channel for training announcements, learning materials and updates.</p>
+</div>
+
+<div class="training-actions">
+<a class="gold-button" href="https://ble.ir/learning_planning" target="_blank" rel="noopener noreferrer" data-en="JOIN OUR BALE CHANNEL" data-fa="عضویت در کانال بله">JOIN OUR BALE CHANNEL</a>
+<a class="outline-button" href="#contact" data-en="COURSE ENQUIRIES" data-fa="استعلام دوره‌ها">COURSE ENQUIRIES</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="container">
+
+<div class="contact-panel">
+<h2 data-en="Let's Build Better Projects Together" data-fa="برای ساخت پروژه‌هایی بهتر، همراه شویم">Let's Build Better Projects Together</h2>
+
+<p data-en="Connect with RAMON GROUP to discuss project services, consulting and professional training opportunities." data-fa="برای گفت‌وگو درباره خدمات پروژه، مشاوره و فرصت‌های آموزش تخصصی با رامون گروپ در ارتباط باشید.">Connect with RAMON GROUP to discuss project services, consulting and professional training opportunities.</p>
+
+<div class="contact-links">
+<a class="contact-link" href="tel:+989129439104" data-en="Call: +98 912 943 9104" data-fa="تماس: ۰۹۱۲۹۴۳۹۱۰۴">Call: +98 912 943 9104</a>
+<a class="contact-link" href="https://wa.me/989129439104" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+<a class="contact-link" href="https://www.linkedin.com/in/ramin-mehdizadeh-634a57381" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<a class="contact-link" href="https://ble.ir/learning_planning" target="_blank" rel="noopener noreferrer" data-en="Bale Channel" data-fa="کانال بله">Bale Channel</a>
+</div>
+
+<p class="contact-note" data-en="Mobile and WhatsApp: +98 912 943 9104" data-fa="موبایل و واتساپ: ۰۹۱۲۹۴۳۹۱۰۴">Mobile and WhatsApp: +98 912 943 9104</p>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+
+<div class="footer-inner">
+
+<a class="footer-logo" href="#home" aria-label="RAMON GROUP">
+<img src="ramon-profile.png" alt="RAMON GROUP">
+</a>
+
+<p class="footer-description" data-en="RAMON GROUP — INTERNATIONAL PROJECT SERVICES. Project Controls, Planning, Consulting and Professional Training." data-fa="رامون گروپ — خدمات بین‌المللی پروژه. کنترل پروژه، برنامه‌ریزی، مشاوره و آموزش تخصصی.">RAMON GROUP — INTERNATIONAL PROJECT SERVICES. Project Controls, Planning, Consulting and Professional Training.</p>
+
+<div class="footer-social">
+<a href="https://www.linkedin.com/in/ramin-mehdizadeh-634a57381" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<a href="https://ble.ir/learning_planning" target="_blank" rel="noopener noreferrer">Bale</a>
+<a href="https://wa.me/989129439104" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+</div>
+
+</div>
+
+<div class="copyright" data-en="© 2026 RAMON GROUP. All Rights Reserved." data-fa="© ۲۰۲۶ رامون گروپ. تمامی حقوق محفوظ است.">© 2026 RAMON GROUP. All Rights Reserved.</div>
+
+</div>
+</footer>
+
+<script>
+const slideContent = [
+
+{
+en:{
+eyebrow:"PROJECT CONSULTING & SCHEDULING",
+title:"Project Consulting & Scheduling for Oil, Refining and Petrochemical Projects",
+description:"Professional project management consultancy, project scheduling, tender schedule documentation, progress monitoring and project controls for oil, refining and petrochemical developments."
+},
+fa:{
+eyebrow:"مشاوره و برنامه‌ریزی پروژه",
+title:"مشاوره و برنامه‌ریزی پروژه‌های نفت، پالایش و پتروشیمی",
+description:"ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های نفتی، پالایشگاهی و پتروشیمی، متناسب با الزامات کارفرما."
+}
+},
+
+{
+en:{
+eyebrow:"GAS TRANSMISSION & FACILITIES",
+title:"Project Consulting & Scheduling for Gas Transmission and Facilities",
+description:"Project management consultancy, project schedules, tender schedule documentation and progress control for gas transmission pipelines, launcher and receiver stations and gas pressure boosting facilities."
+},
+fa:{
+eyebrow:"خطوط انتقال گاز و تأسیسات",
+title:"مشاوره و برنامه‌ریزی پروژه‌های خطوط انتقال گاز و تأسیسات",
+description:"ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های خطوط انتقال گاز، ایستگاه‌های لانچر و رسیور و تأسیسات تقویت فشار گاز، متناسب با ساختار سازمانی و الزامات سازمان توسعه گاز ایران."
+}
+},
+
+{
+en:{
+eyebrow:"BUILDING & CONSTRUCTION PROJECTS",
+title:"Project Consulting & Scheduling for Building and Construction Projects",
+description:"Project management consultancy, project schedules, tender schedule documentation and progress monitoring for residential, commercial, administrative and industrial building projects."
+},
+fa:{
+eyebrow:"پروژه‌های ساختمانی و ابنیه",
+title:"مشاوره و برنامه‌ریزی پروژه‌های ساختمانی و ابنیه",
+description:"ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های ساختمانی، مسکونی، تجاری، اداری و صنعتی، با تمرکز بر مدیریت زمان و هماهنگی فعالیت‌های اجرایی."
+}
+},
+
+{
+en:{
+eyebrow:"ROAD & INFRASTRUCTURE PROJECTS",
+title:"Project Consulting & Scheduling for Road and Infrastructure Projects",
+description:"Project management consultancy, project schedules, tender schedule documentation and progress control for road construction, rehabilitation, highways, freeways and transportation infrastructure projects."
+},
+fa:{
+eyebrow:"پروژه‌های راه‌سازی و زیرساختی",
+title:"مشاوره و برنامه‌ریزی پروژه‌های راه‌سازی و زیرساختی",
+description:"ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های احداث، بهسازی و توسعه راه‌ها، بزرگراه‌ها، آزادراه‌ها و زیرساخت‌های حمل‌ونقل، با تمرکز بر مدیریت زمان و کنترل عملکرد اجرایی."
+}
+}
+
+];
+
+const languageButton=document.getElementById('languageButton');
+let currentLanguage='en';
+
+function setLanguage(language){
+currentLanguage=language;
+document.documentElement.lang=language;
+document.documentElement.dir=language==='fa'?'rtl':'ltr';
+document.body.classList.toggle('fa',language==='fa');
+
+document.querySelectorAll('[data-en][data-fa]').forEach(el=>{
+el.textContent=el.getAttribute('data-'+language);
+});
+
+languageButton.textContent=language==='en'?'فارسی':'English';
+
+document.title=language==='en'
+?'RAMON GROUP | International Project Services'
+:'رامون گروپ | خدمات بین‌المللی پروژه';
+
+renderSlide(currentSlide);
+}
+
+languageButton.addEventListener('click',()=>{
+setLanguage(currentLanguage==='en'?'fa':'en');
+});
+
+const menuButton=document.getElementById('menuButton');
+const mainNav=document.getElementById('mainNav');
+
+menuButton.addEventListener('click',()=>{
+mainNav.classList.toggle('open');
+});
+
+mainNav.querySelectorAll('a').forEach(a=>{
+a.addEventListener('click',()=>{
+mainNav.classList.remove('open');
+});
+});
+
+const slides=[...document.querySelectorAll('.slide')];
+const dots=[...document.querySelectorAll('.slide-dot')];
+
+let currentSlide=0;
+let slideTimer;
+
+function renderSlide(index){
+const content=slideContent[index][currentLanguage];
+
+document.getElementById('slideEyebrow').textContent=content.eyebrow;
+document.getElementById('slideTitle').textContent=content.title;
+document.getElementById('slideDescription').textContent=content.description;
+}
+
+function showSlide(index){
+currentSlide=(index+slides.length)%slides.length;
+
+slides.forEach((s,i)=>{
+s.classList.toggle('active',i===currentSlide);
+});
+
+dots.forEach((d,i)=>{
+d.classList.toggle('active',i===currentSlide);
+});
+
+renderSlide(currentSlide);
+}
+
+function nextSlide(){
+showSlide(currentSlide+1);
+}
+
+function restartTimer(){
+clearInterval(slideTimer);
+slideTimer=setInterval(nextSlide,5000);
+}
+
+document.getElementById('nextSlide').addEventListener('click',()=>{
+nextSlide();
+restartTimer();
+});
+
+document.getElementById('prevSlide').addEventListener('click',()=>{
+showSlide(currentSlide-1);
+restartTimer();
+});
+
+dots.forEach((dot,i)=>{
+dot.addEventListener('click',()=>{
+showSlide(i);
+restartTimer();
+});
+});
+
+restartTimer();
+setLanguage('en');
+</script>
 
 </body>
 </html>
