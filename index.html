@@ -4,11 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RAMON GROUP - International Project Services. Planning, Project Controls, Consulting and Professional Training.">
+<meta name="description" content="RAMON GROUP - International Project Services. Project Planning, Project Controls, Consulting and Professional Training.">
 <meta name="theme-color" content="#ffffff">
 
-<link rel="icon" type="image/png" href="ramon-profile.png">
-<link rel="apple-touch-icon" href="ramon-profile.png">
+<link rel="icon" type="image/png" href="/ramon-profile.png">
+<link rel="apple-touch-icon" href="/ramon-profile.png">
 
 <title>RAMON GROUP | International Project Services</title>
 
@@ -34,10 +34,10 @@ html {
 }
 
 body {
-  font-family: Calibri, Arial, sans-serif;
+  font-family: Calibri, Tahoma, Arial, sans-serif;
   color: var(--text);
   line-height: 1.7;
-  background: var(--white);
+  background: white;
 }
 
 a {
@@ -57,7 +57,7 @@ button {
 /* HEADER */
 
 header {
-  background: #ffffff;
+  background: #fff;
   color: var(--navy);
   position: sticky;
   top: 0;
@@ -85,6 +85,8 @@ header {
   width: 175px;
   height: 70px;
   object-fit: contain;
+  background: #fff;
+  opacity: 1;
 }
 
 nav {
@@ -113,7 +115,6 @@ nav a:hover {
   cursor: pointer;
   font-size: 15px;
   font-weight: bold;
-  transition: .25s;
 }
 
 .lang-btn:hover {
@@ -125,8 +126,8 @@ nav a:hover {
 
 .hero {
   position: relative;
-  overflow: hidden;
   isolation: isolate;
+  overflow: hidden;
   color: white;
   min-height: 660px;
   display: flex;
@@ -134,14 +135,11 @@ nav a:hover {
   background: var(--navy);
 }
 
-.hero-slides,
-.hero-overlay {
+/* Important: slides must be above the hero background */
+.hero-slides {
   position: absolute;
   inset: 0;
-  z-index: -1;
-}
-
-.hero-slides {
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -150,6 +148,7 @@ nav a:hover {
   inset: 0;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
@@ -159,16 +158,19 @@ nav a:hover {
 }
 
 .hero-overlay {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(5,20,39,.88),
-      rgba(5,20,39,.62)
-    );
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(5,20,39,.86),
+    rgba(5,20,39,.58)
+  );
 }
 
 .hero-content {
   position: relative;
+  z-index: 2;
   max-width: 760px;
   padding: 85px 0;
 }
@@ -179,8 +181,10 @@ nav a:hover {
   max-width: 80%;
   height: auto;
   object-fit: contain;
-  margin-bottom: 30px;
-  border-radius: 4px;
+  background: white;
+  padding: 8px 12px;
+  margin-bottom: 28px;
+  border-radius: 5px;
 }
 
 .eyebrow {
@@ -193,7 +197,7 @@ nav a:hover {
 
 .hero h1 {
   font-size: clamp(34px, 5vw, 58px);
-  line-height: 1.2;
+  line-height: 1.3;
   margin-bottom: 22px;
 }
 
@@ -212,6 +216,7 @@ nav a:hover {
   border-radius: 4px;
   font-weight: bold;
   transition: .25s;
+  margin-top: 5px;
 }
 
 .btn:hover {
@@ -228,7 +233,7 @@ nav a:hover {
 
 /* GENERAL SECTIONS */
 
-section {
+section:not(.hero) {
   padding: 85px 0;
 }
 
@@ -309,7 +314,7 @@ section {
   border-radius: 8px;
   background:
     linear-gradient(rgba(8,27,51,.15),rgba(8,27,51,.15)),
-    url("https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1000&q=85")
+    url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=85")
     center/cover;
 }
 
@@ -421,7 +426,7 @@ section {
 /* FOOTER */
 
 footer {
-  background: #ffffff;
+  background: #fff;
   color: var(--navy);
   padding: 40px 0;
   text-align: center;
@@ -432,11 +437,13 @@ footer {
 
 .footer-logo {
   display: block;
-  width: 170px;
+  width: 190px;
   max-width: 75%;
   height: auto;
   margin: 0 auto 20px;
-  border-radius: 4px;
+  background: white;
+  padding: 5px;
+  opacity: 1;
 }
 
 footer strong {
@@ -457,10 +464,6 @@ footer strong {
 [dir="rtl"] .hero-content,
 [dir="rtl"] .about-text {
   text-align: right;
-}
-
-[dir="rtl"] .hero p {
-  margin-right: 0;
 }
 
 /* RESPONSIVE */
@@ -534,7 +537,7 @@ footer strong {
     grid-template-columns: 1fr;
   }
 
-  section {
+  section:not(.hero) {
     padding: 60px 0;
   }
 
@@ -567,7 +570,7 @@ footer strong {
   <div class="container navbar">
 
     <a href="#home" class="brand">
-      <img src="ramon-logo.png" alt="RAMON GROUP Logo">
+      <img src="/ramon-logo.png" alt="RAMON GROUP Logo">
     </a>
 
     <nav>
@@ -586,26 +589,32 @@ footer strong {
 
 <main>
 
-<!-- HOME / SLIDESHOW -->
+<!-- HOME / HERO SLIDESHOW -->
+
 <section class="hero" id="home">
 
   <div class="hero-slides" aria-hidden="true">
-    <!-- Iranian industrial project backgrounds -->
+
+    <!-- Refinery and petrochemical -->
     <div class="hero-slide active"
       style="background-image:url('https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=2000&q=85')">
     </div>
 
+    <!-- Building and civil construction -->
     <div class="hero-slide"
       style="background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=85')">
     </div>
 
+    <!-- Roads and infrastructure -->
     <div class="hero-slide"
-      style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85')">
+      style="background-image:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2000&q=85')">
     </div>
 
+    <!-- Industrial pipelines and transmission -->
     <div class="hero-slide"
       style="background-image:url('https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=2000&q=85')">
     </div>
+
   </div>
 
   <div class="hero-overlay"></div>
@@ -613,7 +622,7 @@ footer strong {
   <div class="container">
     <div class="hero-content">
 
-      <img src="ramon-logo.png"
+      <img src="/ramon-logo.png"
            alt="RAMON GROUP"
            class="hero-logo">
 
@@ -623,37 +632,47 @@ footer strong {
         INTERNATIONAL PROJECT SERVICES
       </div>
 
-      <h1 data-en="Smart Engineering. Precise Control. Sustainable Project Success."
-          data-fa="مهندسی هوشمند، کنترل دقیق، موفقیت پایدار پروژه‌ها">
+      <h1
+        data-en="Smart Engineering. Precise Control. Sustainable Project Success."
+        data-fa="مهندسی هوشمند، کنترل دقیق، موفقیت پایدار پروژه‌ها">
         Smart Engineering. Precise Control. Sustainable Project Success.
       </h1>
 
-      <p data-en="Professional services in project planning, project controls, consulting and training for the energy and industrial sectors."
-         data-fa="ارائه خدمات تخصصی برنامه‌ریزی، کنترل پروژه، مشاوره و آموزش برای صنایع انرژی و پروژه‌های صنعتی.">
+      <p
+        data-en="Professional services in project planning, project controls, consulting and training for the energy and industrial sectors."
+        data-fa="ارائه خدمات تخصصی برنامه‌ریزی، کنترل پروژه، مشاوره و آموزش برای صنایع انرژی و پروژه‌های صنعتی.">
         Professional services in project planning, project controls, consulting and training for the energy and industrial sectors.
       </p>
 
       <a href="#services" class="btn"
          data-en="Explore Our Services"
-         data-fa="مشاهده خدمات">Explore Our Services</a>
+         data-fa="مشاهده خدمات">
+        Explore Our Services
+      </a>
 
       <a href="#contact" class="btn btn-outline"
          data-en="Contact Us"
-         data-fa="تماس با ما">Contact Us</a>
+         data-fa="تماس با ما">
+        Contact Us
+      </a>
 
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
+
 <section class="services" id="services">
   <div class="container">
 
     <div class="section-heading">
       <div class="eyebrow" data-en="WHAT WE DO" data-fa="فعالیت‌های ما">WHAT WE DO</div>
+
       <h2 data-en="Our Services" data-fa="خدمات ما">Our Services</h2>
-      <p data-en="Supporting projects through professional expertise, structured planning and effective project management practices."
-         data-fa="پشتیبانی از پروژه‌ها با تکیه بر دانش تخصصی، برنامه‌ریزی ساختاریافته و روش‌های مؤثر مدیریت پروژه.">
+
+      <p
+        data-en="Supporting projects through professional expertise, structured planning and effective project management practices."
+        data-fa="پشتیبانی از پروژه‌ها با تکیه بر دانش تخصصی، برنامه‌ریزی ساختاریافته و روش‌های مؤثر مدیریت پروژه.">
         Supporting projects through professional expertise, structured planning and effective project management practices.
       </p>
     </div>
@@ -663,8 +682,9 @@ footer strong {
       <div class="card">
         <div class="card-icon">📊</div>
         <h3 data-en="Project Controls" data-fa="کنترل پروژه">Project Controls</h3>
-        <p data-en="Project monitoring, performance measurement, cost control and reporting."
-           data-fa="پایش پروژه، اندازه‌گیری عملکرد، کنترل هزینه و تهیه گزارش‌های مدیریتی.">
+        <p
+          data-en="Project monitoring, performance measurement, cost control and reporting."
+          data-fa="پایش پروژه، اندازه‌گیری عملکرد، کنترل هزینه و تهیه گزارش‌های مدیریتی.">
           Project monitoring, performance measurement, cost control and reporting.
         </p>
       </div>
@@ -672,8 +692,9 @@ footer strong {
       <div class="card">
         <div class="card-icon">📅</div>
         <h3 data-en="Planning & Scheduling" data-fa="برنامه‌ریزی و زمان‌بندی">Planning & Scheduling</h3>
-        <p data-en="Project planning, scheduling, progress tracking and schedule analysis."
-           data-fa="برنامه‌ریزی پروژه، زمان‌بندی، پایش پیشرفت و تحلیل برنامه زمان‌بندی.">
+        <p
+          data-en="Project planning, scheduling, progress tracking and schedule analysis."
+          data-fa="برنامه‌ریزی پروژه، زمان‌بندی، پایش پیشرفت و تحلیل برنامه زمان‌بندی.">
           Project planning, scheduling, progress tracking and schedule analysis.
         </p>
       </div>
@@ -681,8 +702,9 @@ footer strong {
       <div class="card">
         <div class="card-icon">🤝</div>
         <h3 data-en="Consulting" data-fa="مشاوره">Consulting</h3>
-        <p data-en="Professional advisory services for project management and control systems."
-           data-fa="ارائه خدمات مشاوره تخصصی در مدیریت پروژه و سیستم‌های کنترل پروژه.">
+        <p
+          data-en="Professional advisory services for project management and control systems."
+          data-fa="ارائه خدمات مشاوره تخصصی در مدیریت پروژه و سیستم‌های کنترل پروژه.">
           Professional advisory services for project management and control systems.
         </p>
       </div>
@@ -690,8 +712,9 @@ footer strong {
       <div class="card">
         <div class="card-icon">🎓</div>
         <h3 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h3>
-        <p data-en="Practical learning and professional development in project management disciplines."
-           data-fa="آموزش کاربردی و توسعه مهارت‌های حرفه‌ای در حوزه مدیریت پروژه.">
+        <p
+          data-en="Practical learning and professional development in project management disciplines."
+          data-fa="آموزش کاربردی و توسعه مهارت‌های حرفه‌ای در حوزه مدیریت پروژه.">
           Practical learning and professional development in project management disciplines.
         </p>
       </div>
@@ -701,42 +724,63 @@ footer strong {
 </section>
 
 <!-- ABOUT -->
+
 <section id="about">
   <div class="container about-grid">
 
     <div class="about-image"></div>
 
     <div class="about-text">
-      <div class="eyebrow" data-en="ABOUT RAMON GROUP" data-fa="درباره رامون گروپ">ABOUT RAMON GROUP</div>
 
-      <h2 data-en="A Professional Approach to Project Services"
-          data-fa="نگاهی حرفه‌ای به خدمات پروژه">
+      <div class="eyebrow"
+           data-en="ABOUT RAMON GROUP"
+           data-fa="درباره رامون گروپ">
+        ABOUT RAMON GROUP
+      </div>
+
+      <h2
+        data-en="A Professional Approach to Project Services"
+        data-fa="نگاهی حرفه‌ای به خدمات پروژه">
         A Professional Approach to Project Services
       </h2>
 
-      <p data-en="RAMON GROUP focuses on project services, planning, project controls, consulting and professional training for energy and industrial projects."
-         data-fa="رامون گروپ با تمرکز بر خدمات پروژه، برنامه‌ریزی، کنترل پروژه، مشاوره و آموزش تخصصی در پروژه‌های انرژی و صنعتی فعالیت می‌کند.">
+      <p
+        data-en="RAMON GROUP focuses on project services, planning, project controls, consulting and professional training for energy and industrial projects."
+        data-fa="رامون گروپ با تمرکز بر خدمات پروژه، برنامه‌ریزی، کنترل پروژه، مشاوره و آموزش تخصصی در پروژه‌های انرژی و صنعتی فعالیت می‌کند.">
         RAMON GROUP focuses on project services, planning, project controls, consulting and professional training for energy and industrial projects.
       </p>
 
-      <p data-en="Our approach is built around structured processes, informed decisions and a commitment to professional development."
-         data-fa="رویکرد ما بر پایه فرآیندهای ساختاریافته، تصمیم‌گیری آگاهانه و توسعه دانش و مهارت‌های حرفه‌ای است.">
+      <p
+        data-en="Our approach is built around structured processes, informed decisions and a commitment to professional development."
+        data-fa="رویکرد ما بر پایه فرآیندهای ساختاریافته، تصمیم‌گیری آگاهانه و توسعه دانش و مهارت‌های حرفه‌ای است.">
         Our approach is built around structured processes, informed decisions and a commitment to professional development.
       </p>
-    </div>
 
+    </div>
   </div>
 </section>
 
 <!-- INDUSTRIES -->
+
 <section class="industries" id="industries">
   <div class="container">
 
     <div class="section-heading">
-      <div class="eyebrow" data-en="OUR INDUSTRIES" data-fa="حوزه‌های تخصصی">OUR INDUSTRIES</div>
-      <h2 data-en="Industries We Focus On" data-fa="صنایع مورد تمرکز ما">Industries We Focus On</h2>
-      <p data-en="Project services designed for complex industrial environments."
-         data-fa="خدمات پروژه متناسب با محیط‌های پیچیده صنعتی.">
+      <div class="eyebrow"
+           data-en="OUR INDUSTRIES"
+           data-fa="حوزه‌های تخصصی">
+        OUR INDUSTRIES
+      </div>
+
+      <h2
+        data-en="Industries We Focus On"
+        data-fa="صنایع مورد تمرکز ما">
+        Industries We Focus On
+      </h2>
+
+      <p
+        data-en="Project services designed for complex industrial environments."
+        data-fa="خدمات پروژه متناسب با محیط‌های پیچیده صنعتی.">
         Project services designed for complex industrial environments.
       </p>
     </div>
@@ -745,25 +789,28 @@ footer strong {
 
       <div class="industry">
         <h3 data-en="Oil & Gas" data-fa="نفت و گاز">Oil & Gas</h3>
-        <p data-en="Upstream, midstream and downstream projects."
-           data-fa="پروژه‌های بالادستی، میان‌دستی و پایین‌دستی.">
+        <p
+          data-en="Upstream, midstream and downstream projects."
+          data-fa="پروژه‌های بالادستی، میان‌دستی و پایین‌دستی.">
           Upstream, midstream and downstream projects.
         </p>
       </div>
 
       <div class="industry">
         <h3 data-en="Petrochemical" data-fa="پتروشیمی">Petrochemical</h3>
-        <p data-en="Petrochemical plants and industrial facilities."
-           data-fa="مجتمع‌های پتروشیمی و تأسیسات صنعتی.">
+        <p
+          data-en="Petrochemical plants and industrial facilities."
+          data-fa="مجتمع‌های پتروشیمی و تأسیسات صنعتی.">
           Petrochemical plants and industrial facilities.
         </p>
       </div>
 
       <div class="industry">
-        <h3 data-en="Energy & Industry" data-fa="انرژی و صنعت">Energy & Industry</h3>
-        <p data-en="Energy infrastructure and industrial projects."
-           data-fa="زیرساخت‌های انرژی و پروژه‌های صنعتی.">
-          Energy infrastructure and industrial projects.
+        <h3 data-en="Infrastructure & Civil" data-fa="عمران و زیرساخت">Infrastructure & Civil</h3>
+        <p
+          data-en="Buildings, roads, infrastructure and transmission projects."
+          data-fa="پروژه‌های ساختمانی، راه‌سازی، زیرساخت و خطوط انتقال.">
+          Buildings, roads, infrastructure and transmission projects.
         </p>
       </div>
 
@@ -772,52 +819,74 @@ footer strong {
 </section>
 
 <!-- TRAINING -->
+
 <section class="training" id="training">
   <div class="container">
 
     <div class="section-heading">
-      <div class="eyebrow" data-en="LEARNING & DEVELOPMENT" data-fa="یادگیری و توسعه">LEARNING & DEVELOPMENT</div>
-      <h2 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h2>
+      <div class="eyebrow"
+           data-en="LEARNING & DEVELOPMENT"
+           data-fa="یادگیری و توسعه">
+        LEARNING & DEVELOPMENT
+      </div>
+
+      <h2 data-en="Professional Training" data-fa="آموزش تخصصی">
+        Professional Training
+      </h2>
     </div>
 
     <div class="training-box">
-      <h3 data-en="Build Your Project Management Skills"
-          data-fa="مهارت‌های مدیریت پروژه خود را توسعه دهید">
+
+      <h3
+        data-en="Build Your Project Management Skills"
+        data-fa="مهارت‌های مدیریت پروژه خود را توسعه دهید">
         Build Your Project Management Skills
       </h3>
 
-      <p data-en="Explore professional learning opportunities in project planning, scheduling, project controls and project management."
-         data-fa="فرصت‌های یادگیری تخصصی در برنامه‌ریزی، زمان‌بندی، کنترل پروژه و مدیریت پروژه را دنبال کنید.">
+      <p
+        data-en="Explore professional learning opportunities in project planning, scheduling, project controls and project management."
+        data-fa="فرصت‌های یادگیری تخصصی در برنامه‌ریزی، زمان‌بندی، کنترل پروژه و مدیریت پروژه را دنبال کنید.">
         Explore professional learning opportunities in project planning, scheduling, project controls and project management.
       </p>
 
       <a href="#contact" class="btn"
          data-en="Training Enquiries"
-         data-fa="درخواست اطلاعات آموزش">Training Enquiries</a>
-    </div>
+         data-fa="درخواست اطلاعات آموزش">
+        Training Enquiries
+      </a>
 
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
+
 <section class="contact" id="contact">
   <div class="container">
 
-    <div class="eyebrow" data-en="GET IN TOUCH" data-fa="با ما در ارتباط باشید">GET IN TOUCH</div>
+    <div class="eyebrow"
+         data-en="GET IN TOUCH"
+         data-fa="با ما در ارتباط باشید">
+      GET IN TOUCH
+    </div>
 
-    <h2 data-en="Let's Discuss Your Project"
-        data-fa="درباره پروژه خود با ما گفتگو کنید">
+    <h2
+      data-en="Let's Discuss Your Project"
+      data-fa="درباره پروژه خود با ما گفتگو کنید">
       Let's Discuss Your Project
     </h2>
 
-    <p data-en="Contact RAMON GROUP for project services, consulting and professional training enquiries."
-       data-fa="برای دریافت اطلاعات درباره خدمات پروژه، مشاوره و آموزش تخصصی با رامون گروپ در ارتباط باشید.">
+    <p
+      data-en="Contact RAMON GROUP for project services, consulting and professional training enquiries."
+      data-fa="برای دریافت اطلاعات درباره خدمات پروژه، مشاوره و آموزش تخصصی با رامون گروپ در ارتباط باشید.">
       Contact RAMON GROUP for project services, consulting and professional training enquiries.
     </p>
 
     <a href="#contact" class="btn"
        data-en="Contact Our Team"
-       data-fa="ارتباط با مجموعه">Contact Our Team</a>
+       data-fa="ارتباط با مجموعه">
+      Contact Our Team
+    </a>
 
   </div>
 </section>
@@ -825,10 +894,11 @@ footer strong {
 </main>
 
 <!-- FOOTER -->
+
 <footer>
   <div class="container">
 
-    <img src="ramon-logo.png"
+    <img src="/ramon-logo.png"
          alt="RAMON GROUP"
          class="footer-logo">
 
@@ -845,9 +915,11 @@ footer strong {
 let currentLanguage = "en";
 
 function toggleLanguage() {
+
   currentLanguage = currentLanguage === "en" ? "fa" : "en";
 
   document.documentElement.lang = currentLanguage;
+
   document.documentElement.dir =
     currentLanguage === "fa" ? "rtl" : "ltr";
 
@@ -865,21 +937,27 @@ function toggleLanguage() {
 }
 
 /* HERO SLIDESHOW: CHANGE EVERY 5 SECONDS */
+
 const heroSlides = document.querySelectorAll(".hero-slide");
 let activeSlide = 0;
 
 if (heroSlides.length > 1) {
   setInterval(() => {
+
     heroSlides[activeSlide].classList.remove("active");
 
     activeSlide = (activeSlide + 1) % heroSlides.length;
 
     heroSlides[activeSlide].classList.add("active");
+
   }, 5000);
 }
 
+/* FOOTER YEAR */
+
 document.getElementById("year").textContent =
   new Date().getFullYear();
+
 </script>
 
 </body>
