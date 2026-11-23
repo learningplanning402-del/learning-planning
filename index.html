@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RAMON GROUP - International Project Services. Planning, Project Controls, Consulting and Professional Training.">
+<meta name="theme-color" content="#081b33">
+<title>RAMON GROUP | International Project Services</title>
+
+<style>
+:root {
+  --navy: #081b33;
+  --navy2: #102c4d;
+  --gold: #c9a34d;
+  --light: #f5f7fa;
+  --text: #25364a;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, Tahoma, sans-serif;
+  color: var(--text);
+  line-height: 1.7;
+  background: var(--white);
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+header {
+  background: var(--navy);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(201,163,77,.3);
+}
+
+.navbar {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  color: white;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.brand span { color: var(--gold); }
+
+.brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: normal;
+  color: #d8dce3;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+nav a {
+  font-size: 13px;
+  color: #e7ebf1;
+  transition: .2s;
+}
+
+nav a:hover { color: var(--gold); }
+
+.lang-btn {
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  padding: 9px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hero {
+  background:
+    linear-gradient(90deg, rgba(5,20,39,.95), rgba(5,20,39,.67)),
+    url("https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=2000&q=85");
+  background-position: center;
+  background-size: cover;
+  color: white;
+  min-height: 570px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content { max-width: 720px; padding: 85px 0; }
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+
+.hero p {
+  color: #dce4ef;
+  font-size: 17px;
+  max-width: 620px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 13px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: .2s;
+}
+
+.btn:hover { background: #e1bd70; transform: translateY(-2px); }
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 1px solid var(--gold);
+  margin-inline-start: 10px;
+}
+
+section { padding: 85px 0; }
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-heading .eyebrow { margin-bottom: 8px; }
+
+.section-heading h2 {
+  color: var(--navy);
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.section-heading p {
+  max-width: 650px;
+  margin: auto;
+  color: #667487;
+}
+
+.services { background: var(--light); }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 30px 24px;
+  border-radius: 8px;
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 8px 28px rgba(10,30,55,.06);
+  transition: .25s;
+}
+
+.card:hover { transform: translateY(-6px); }
+
+.card-icon {
+  font-size: 31px;
+  margin-bottom: 18px;
+}
+
+.card h3 {
+  color: var(--navy);
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.card p { color: #697789; font-size: 14px; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+}
+
+.about-image {
+  min-height: 360px;
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(8,27,51,.15),rgba(8,27,51,.15)),
+    url("https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1000&q=85")
+    center/cover;
+}
+
+.about-text h2 {
+  color: var(--navy);
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  color: #647286;
+  margin-bottom: 18px;
+}
+
+.industries {
+  background: var(--navy);
+  color: white;
+}
+
+.industries .section-heading h2 { color: white; }
+.industries .section-heading p { color: #c7d0dd; }
+
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.industry {
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(201,163,77,.4);
+  border-radius: 8px;
+}
+
+.industry h3 { color: var(--gold); margin-bottom: 8px; }
+.industry p { color: #d0d8e2; font-size: 14px; }
+
+.training { background: var(--light); }
+
+.training-box {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  border-top: 4px solid var(--gold);
+  box-shadow: 0 8px 30px rgba(10,30,55,.06);
+}
+
+.training-box h3 {
+  color: var(--navy);
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.training-box p { color: #647286; margin-bottom: 25px; }
+
+.contact {
+  background: white;
+  text-align: center;
+}
+
+.contact h2 {
+  color: var(--navy);
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+.contact p {
+  color: #647286;
+  margin-bottom: 25px;
+}
+
+footer {
+  background: #051426;
+  color: #c5ceda;
+  padding: 28px 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+footer strong { color: var(--gold); }
+
+[dir="rtl"] body { font-family: Tahoma, Arial, sans-serif; }
+[dir="rtl"] .eyebrow { letter-spacing: 0; }
+
+@media(max-width: 900px) {
+  nav { gap: 12px; }
+  nav a { font-size: 11px; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(max-width: 650px) {
+  .navbar { flex-wrap: wrap; padding: 15px 0; }
+  nav { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; }
+  .brand { font-size: 21px; }
+  .hero { min-height: 500px; }
+  .hero-content { padding: 65px 0; }
+  .hero p { font-size: 15px; }
+  .about-grid { grid-template-columns: 1fr; gap: 28px; }
+  .about-image { min-height: 250px; }
+  .industry-grid { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  section { padding: 60px 0; }
+  .training-box { padding: 28px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+    <a href="#" class="brand">
+      RAMON <span>GROUP</span>
+      <small>INTERNATIONAL PROJECT SERVICES</small>
+    </a>
+
+    <nav>
+      <a href="#home" data-en="Home" data-fa="صفحه اصلی">Home</a>
+      <a href="#about" data-en="About Us" data-fa="درباره ما">About Us</a>
+      <a href="#services" data-en="Services" data-fa="خدمات">Services</a>
+      <a href="#industries" data-en="Industries" data-fa="صنایع">Industries</a>
+      <a href="#training" data-en="Training" data-fa="آموزش">Training</a>
+      <a href="#contact" data-en="Contact" data-fa="تماس با ما">Contact</a>
+    </nav>
+
+    <button class="lang-btn" onclick="toggleLanguage()">فارسی</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow" data-en="INTERNATIONAL PROJECT SERVICES" data-fa="خدمات بین‌المللی پروژه">
+        INTERNATIONAL PROJECT SERVICES
+      </div>
+
+      <h1 data-en="Engineering Excellence. Project Success."
+          data-fa="تعالی مهندسی؛ موفقیت پروژه‌ها">
+        Engineering Excellence. Project Success.
+      </h1>
+
+      <p data-en="Professional services in project planning, project controls, consulting and training for the energy and industrial sectors."
+         data-fa="ارائه خدمات تخصصی برنامه‌ریزی، کنترل پروژه، مشاوره و آموزش برای صنایع انرژی و پروژه‌های صنعتی.">
+        Professional services in project planning, project controls, consulting and training for the energy and industrial sectors.
+      </p>
+
+      <a href="#services" class="btn" data-en="Explore Our Services" data-fa="مشاهده خدمات">Explore Our Services</a>
+      <a href="#contact" class="btn btn-outline" data-en="Contact Us" data-fa="تماس با ما">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow" data-en="WHAT WE DO" data-fa="فعالیت‌های ما">WHAT WE DO</div>
+      <h2 data-en="Our Services" data-fa="خدمات ما">Our Services</h2>
+      <p data-en="Supporting projects through professional expertise, structured planning and effective project management practices."
+         data-fa="پشتیبانی از پروژه‌ها با تکیه بر دانش تخصصی، برنامه‌ریزی ساختاریافته و روش‌های مؤثر مدیریت پروژه.">
+        Supporting projects through professional expertise, structured planning and effective project management practices.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3 data-en="Project Controls" data-fa="کنترل پروژه">Project Controls</h3>
+        <p data-en="Project monitoring, performance measurement, cost control and reporting."
+           data-fa="پایش پروژه، اندازه‌گیری عملکرد، کنترل هزینه و تهیه گزارش‌های مدیریتی.">
+          Project monitoring, performance measurement, cost control and reporting.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <h3 data-en="Planning & Scheduling" data-fa="برنامه‌ریزی و زمان‌بندی">Planning & Scheduling</h3>
+        <p data-en="Project planning, scheduling, progress tracking and schedule analysis."
+           data-fa="برنامه‌ریزی پروژه، زمان‌بندی، پایش پیشرفت و تحلیل برنامه زمان‌بندی.">
+          Project planning, scheduling, progress tracking and schedule analysis.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3 data-en="Consulting" data-fa="مشاوره">Consulting</h3>
+        <p data-en="Professional advisory services for project management and control systems."
+           data-fa="ارائه خدمات مشاوره تخصصی در مدیریت پروژه و سیستم‌های کنترل پروژه.">
+          Professional advisory services for project management and control systems.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h3>
+        <p data-en="Practical learning and professional development in project management disciplines."
+           data-fa="آموزش کاربردی و توسعه مهارت‌های حرفه‌ای در حوزه مدیریت پروژه.">
+          Practical learning and professional development in project management disciplines.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-image"></div>
+    <div class="about-text">
+      <div class="eyebrow" data-en="ABOUT RAMON GROUP" data-fa="درباره رامون گروپ">ABOUT RAMON GROUP</div>
+      <h2 data-en="A Professional Approach to Project Services"
+          data-fa="نگاهی حرفه‌ای به خدمات پروژه">
+        A Professional Approach to Project Services
+      </h2>
+      <p data-en="RAMON GROUP focuses on project services, planning, project controls, consulting and professional training for energy and industrial projects."
+         data-fa="رامون گروپ با تمرکز بر خدمات پروژه، برنامه‌ریزی، کنترل پروژه، مشاوره و آموزش تخصصی در پروژه‌های انرژی و صنعتی فعالیت می‌کند.">
+        RAMON GROUP focuses on project services, planning, project controls, consulting and professional training for energy and industrial projects.
+      </p>
+      <p data-en="Our approach is built around structured processes, informed decisions and a commitment to professional development."
+         data-fa="رویکرد ما بر پایه فرآیندهای ساختاریافته، تصمیم‌گیری آگاهانه و توسعه دانش و مهارت‌های حرفه‌ای است.">
+        Our approach is built around structured processes, informed decisions and a commitment to professional development.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="industries" id="industries">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow" data-en="OUR INDUSTRIES" data-fa="حوزه‌های تخصصی">OUR INDUSTRIES</div>
+      <h2 data-en="Industries We Focus On" data-fa="صنایع مورد تمرکز ما">Industries We Focus On</h2>
+      <p data-en="Project services designed for complex industrial environments."
+         data-fa="خدمات پروژه متناسب با محیط‌های پیچیده صنعتی.">
+        Project services designed for complex industrial environments.
+      </p>
+    </div>
+
+    <div class="industry-grid">
+      <div class="industry">
+        <h3 data-en="Oil & Gas" data-fa="نفت و گاز">Oil & Gas</h3>
+        <p data-en="Upstream, midstream and downstream projects."
+           data-fa="پروژه‌های بالادستی، میان‌دستی و پایین‌دستی.">
+          Upstream, midstream and downstream projects.
+        </p>
+      </div>
+
+      <div class="industry">
+        <h3 data-en="Petrochemical" data-fa="پتروشیمی">Petrochemical</h3>
+        <p data-en="Petrochemical plants and industrial facilities."
+           data-fa="مجتمع‌های پتروشیمی و تأسیسات صنعتی.">
+          Petrochemical plants and industrial facilities.
+        </p>
+      </div>
+
+      <div class="industry">
+        <h3 data-en="Energy & Industry" data-fa="انرژی و صنعت">Energy & Industry</h3>
+        <p data-en="Energy infrastructure and industrial projects."
+           data-fa="زیرساخت‌های انرژی و پروژه‌های صنعتی.">
+          Energy infrastructure and industrial projects.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="training" id="training">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow" data-en="LEARNING & DEVELOPMENT" data-fa="یادگیری و توسعه">LEARNING & DEVELOPMENT</div>
+      <h2 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h2>
+    </div>
+
+    <div class="training-box">
+      <h3 data-en="Build Your Project Management Skills"
+          data-fa="مهارت‌های مدیریت پروژه خود را توسعه دهید">
+        Build Your Project Management Skills
+      </h3>
+      <p data-en="Explore professional learning opportunities in project planning, scheduling, project controls and project management."
+         data-fa="فرصت‌های یادگیری تخصصی در برنامه‌ریزی، زمان‌بندی، کنترل پروژه و مدیریت پروژه را دنبال کنید.">
+        Explore professional learning opportunities in project planning, scheduling, project controls and project management.
+      </p>
+      <a href="#contact" class="btn" data-en="Training Enquiries" data-fa="درخواست اطلاعات آموزش">Training Enquiries</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="eyebrow" data-en="GET IN TOUCH" data-fa="با ما در ارتباط باشید">GET IN TOUCH</div>
+    <h2 data-en="Let's Discuss Your Project"
+        data-fa="درباره پروژه خود با ما گفتگو کنید">
+      Let's Discuss Your Project
+    </h2>
+    <p data-en="Contact RAMON GROUP for project services, consulting and professional training enquiries."
+       data-fa="برای دریافت اطلاعات درباره خدمات پروژه، مشاوره و آموزش تخصصی با رامون گروپ در ارتباط باشید.">
+      Contact RAMON GROUP for project services, consulting and professional training enquiries.
+    </p>
+    <a href="mailto:" class="btn" data-en="Contact Our Team" data-fa="ارتباط با مجموعه">Contact Our Team</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>RAMON GROUP</strong> |
+    INTERNATIONAL PROJECT SERVICES
+    <br>
+    © <span id="year"></span> RAMON GROUP. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+let currentLanguage = "en";
+
+function toggleLanguage() {
+  currentLanguage = currentLanguage === "en" ? "fa" : "en";
+
+  document.documentElement.lang = currentLanguage;
+  document.documentElement.dir = currentLanguage === "fa" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-en]").forEach(element => {
+    element.textContent = element.getAttribute("data-" + currentLanguage);
+  });
+
+  document.querySelector(".lang-btn").textContent =
+    currentLanguage === "en" ? "فارسی" : "English";
+
+  document.title = currentLanguage === "en"
+    ? "RAMON GROUP | International Project Services"
+    : "رامون گروپ | خدمات بین‌المللی پروژه";
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
