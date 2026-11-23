@@ -2,912 +2,878 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RAMON GROUP - International Project Services, Project Controls, Planning, Consulting and Training.">
-<meta name="theme-color" content="#081b33">
-<link rel="icon" type="image/png" href="ramon-profile.png">
-<title>RAMON GROUP | International Project Services</title>
-
-<style>
-:root {
-  --navy: #081b33;
-  --navy2: #102c4d;
-  --gold: #c9a34d;
-  --light: #f5f7fa;
-  --text: #25364a;
-  --white: #ffffff;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: Arial, Tahoma, sans-serif;
-  color: var(--text);
-  line-height: 1.7;
-  background: white;
-}
-
-a { text-decoration: none; color: inherit; }
-
-.container {
-  width: min(1160px, 90%);
-  margin: auto;
-}
-
-/* HEADER */
-
-header {
-  background: var(--navy);
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(201,163,77,.4);
-  box-shadow: 0 4px 20px rgba(0,0,0,.12);
-}
-
-.navbar {
-  min-height: 88px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-}
-
-.brand img {
-  display: block;
-  width: 175px;
-  max-height: 68px;
-  object-fit: contain;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  gap: 23px;
-}
-
-nav a {
-  font-size: 13px;
-  color: #e7ebf1;
-  transition: .25s;
-}
-
-nav a:hover { color: var(--gold); }
-
-.lang-btn {
-  border: 1px solid var(--gold);
-  background: transparent;
-  color: var(--gold);
-  padding: 9px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 13px;
-}
-
-/* HERO SLIDESHOW */
-
-.hero {
-  position: relative;
-  min-height: 620px;
-  height: min(75vh, 760px);
-  background: var(--navy);
-  color: white;
-  overflow: hidden;
-}
-
-.slides,
-.slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.slide {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1.2s ease, visibility 1.2s;
-}
-
-.slide.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-}
-
-.slide::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(3,15,29,.88),
-    rgba(3,15,29,.52) 60%,
-    rgba(3,15,29,.25)
-  );
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3;
-  min-height: 620px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 70px 0 100px;
-  pointer-events: none;
-}
-
-.hero-content a { pointer-events: auto; }
-
-.eyebrow {
-  color: var(--gold);
-  letter-spacing: 3px;
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 18px;
-}
-
-.hero h1 {
-  font-size: clamp(34px, 5vw, 60px);
-  line-height: 1.2;
-  max-width: 760px;
-  margin-bottom: 22px;
-}
-
-.hero p {
-  color: #e0e7ef;
-  font-size: 17px;
-  max-width: 650px;
-  margin-bottom: 30px;
-}
-
-.btn {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--navy);
-  padding: 13px 25px;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: .25s;
-}
-
-.btn:hover {
-  background: #e1bd70;
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  background: transparent;
-  color: white;
-  border: 1px solid var(--gold);
-  margin-inline-start: 10px;
-}
-
-.slider-arrow {
-  position: absolute;
-  z-index: 5;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.65);
-  background: rgba(5,20,39,.45);
-  color: white;
-  font-size: 25px;
-  cursor: pointer;
-  transition: .25s;
-}
-
-.slider-arrow:hover {
-  background: var(--gold);
-  color: var(--navy);
-}
-
-.prev { left: 25px; }
-.next { right: 25px; }
-
-.slider-dots {
-  position: absolute;
-  z-index: 5;
-  bottom: 30px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.dot {
-  width: 11px;
-  height: 11px;
-  border: 1px solid white;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-}
-
-.dot.active {
-  background: var(--gold);
-  border-color: var(--gold);
-  transform: scale(1.2);
-}
-
-/* GENERAL SECTIONS */
-
-section { padding: 85px 0; }
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 45px;
-}
-
-.section-heading .eyebrow { margin-bottom: 8px; }
-
-.section-heading h2 {
-  color: var(--navy);
-  font-size: 34px;
-  margin-bottom: 12px;
-}
-
-.section-heading p {
-  max-width: 680px;
-  margin: auto;
-  color: #667487;
-}
-
-.services { background: var(--light); }
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-}
-
-.card {
-  background: white;
-  padding: 30px 24px;
-  border-radius: 7px;
-  border-bottom: 3px solid var(--gold);
-  box-shadow: 0 8px 28px rgba(10,30,55,.06);
-  transition: .25s;
-}
-
-.card:hover { transform: translateY(-6px); }
-
-.card-icon {
-  font-size: 32px;
-  margin-bottom: 18px;
-}
-
-.card h3 {
-  color: var(--navy);
-  font-size: 18px;
-  margin-bottom: 12px;
-}
-
-.card p {
-  color: #697789;
-  font-size: 14px;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 55px;
-}
-
-.about-image {
-  min-height: 370px;
-  border-radius: 7px;
-  background:
-    linear-gradient(rgba(8,27,51,.15),rgba(8,27,51,.15)),
-    url("Slide1.jfif") center/cover;
-}
-
-.about-text h2 {
-  color: var(--navy);
-  font-size: 34px;
-  margin-bottom: 20px;
-}
-
-.about-text p {
-  color: #647286;
-  margin-bottom: 18px;
-}
-
-.industries {
-  background: var(--navy);
-  color: white;
-}
-
-.industries .section-heading h2 { color: white; }
-.industries .section-heading p { color: #c7d0dd; }
-
-.industry-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.industry {
-  padding: 30px;
-  text-align: center;
-  border: 1px solid rgba(201,163,77,.4);
-  border-radius: 7px;
-  transition: .25s;
-}
-
-.industry:hover {
-  background: rgba(255,255,255,.05);
-  border-color: var(--gold);
-}
-
-.industry h3 {
-  color: var(--gold);
-  margin-bottom: 8px;
-}
-
-.industry p {
-  color: #d0d8e2;
-  font-size: 14px;
-}
-
-.training { background: var(--light); }
-
-.training-box {
-  max-width: 850px;
-  margin: auto;
-  background: white;
-  padding: 45px;
-  border-radius: 7px;
-  text-align: center;
-  border-top: 4px solid var(--gold);
-  box-shadow: 0 8px 30px rgba(10,30,55,.06);
-}
-
-.training-box h3 {
-  color: var(--navy);
-  font-size: 25px;
-  margin-bottom: 15px;
-}
-
-.training-box p {
-  color: #647286;
-  margin-bottom: 25px;
-}
-
-.contact {
-  background: white;
-  text-align: center;
-}
-
-.contact h2 {
-  color: var(--navy);
-  font-size: 34px;
-  margin-bottom: 15px;
-}
-
-.contact p {
-  color: #647286;
-  margin-bottom: 25px;
-}
-
-/* FOOTER */
-
-footer {
-  background: #051426;
-  color: #c5ceda;
-  padding: 42px 0 25px;
-  text-align: center;
-  font-size: 13px;
-  border-top: 2px solid rgba(201,163,77,.5);
-}
-
-.footer-logo {
-  width: 155px;
-  max-height: 65px;
-  object-fit: contain;
-  margin: 0 auto 15px;
-  display: block;
-}
-
-footer .footer-tagline {
-  color: var(--gold);
-  letter-spacing: 2px;
-  font-size: 11px;
-  margin-bottom: 18px;
-}
-
-footer .copyright {
-  border-top: 1px solid rgba(255,255,255,.12);
-  padding-top: 18px;
-  margin-top: 20px;
-}
-
-/* PERSIAN */
-
-[dir="rtl"] body {
-  font-family: Tahoma, Arial, sans-serif;
-}
-
-[dir="rtl"] .eyebrow { letter-spacing: 0; }
-
-[dir="rtl"] .hero-content {
-  align-items: flex-start;
-}
-
-[dir="rtl"] .slide::after {
-  background: linear-gradient(
-    270deg,
-    rgba(3,15,29,.88),
-    rgba(3,15,29,.52) 60%,
-    rgba(3,15,29,.25)
-  );
-}
-
-/* RESPONSIVE */
-
-@media(max-width: 950px) {
-  .navbar { gap: 14px; }
-  nav { gap: 13px; }
-  nav a { font-size: 11px; }
-  .brand img { width: 145px; }
-  .cards { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media(max-width: 700px) {
-  .navbar {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 12px 0;
-  }
-
-  .brand img { width: 135px; }
-
-  nav {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px 17px;
-    padding: 8px 0;
-  }
-
-  nav a { font-size: 12px; }
-
-  .hero {
-    min-height: 570px;
-    height: 75vh;
-  }
-
-  .hero-content {
-    min-height: 570px;
-    padding: 55px 0 85px;
-  }
-
-  .hero h1 { font-size: 36px; }
-  .hero p { font-size: 15px; }
-
-  .slider-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
-  }
-
-  .prev { left: 10px; }
-  .next { right: 10px; }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .about-image { min-height: 260px; }
-
-  .industry-grid { grid-template-columns: 1fr; }
-
-  .cards { grid-template-columns: 1fr; }
-
-  section { padding: 60px 0; }
-
-  .training-box { padding: 30px 20px; }
-
-  .section-heading h2,
-  .about-text h2,
-  .contact h2 { font-size: 28px; }
-}
-
-@media(prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .slide { transition: none; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07182b">
+  <meta name="description" content="RAMON GROUP - International Project Services, Project Controls, Engineering and Professional Training.">
+
+  <title>RAMON GROUP | International Project Services</title>
+
+  <link rel="icon" type="image/png" href="ramon-profile.png">
+  <link rel="apple-touch-icon" href="ramon-profile.png">
+
+  <style>
+    :root {
+      --navy: #07182b;
+      --navy2: #102b47;
+      --gold: #c6a15b;
+      --gold-light: #e1c98f;
+      --white: #ffffff;
+      --light: #f4f5f7;
+      --text: #263547;
+      --muted: #667487;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1160px, 92%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      background: var(--navy);
+      border-bottom: 1px solid rgba(198,161,91,.35);
+      position: relative;
+      z-index: 10;
+    }
+
+    .header-inner {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand img {
+      width: 190px;
+      max-height: 65px;
+      object-fit: contain;
+      display: block;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    nav a {
+      transition: color .2s;
+    }
+
+    nav a:hover {
+      color: var(--gold-light);
+    }
+
+    .lang-btn {
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold-light);
+      padding: 8px 15px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .lang-btn:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* HERO SLIDER */
+
+    .hero {
+      background:
+        radial-gradient(circle at 15% 50%, #173654 0, transparent 45%),
+        linear-gradient(120deg, #07182b, #102b47);
+      color: white;
+      padding: 48px 0 35px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 45px;
+      min-height: 340px;
+    }
+
+    .hero-copy {
+      padding: 15px 0;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .hero-copy h1 {
+      color: #fff;
+      font-size: clamp(27px, 3.5vw, 43px);
+      line-height: 1.35;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy p {
+      color: #d2dbe5;
+      font-size: 16px;
+      max-width: 540px;
+      margin-bottom: 25px;
+    }
+
+    .gold-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 3px;
+      transition: .2s;
+    }
+
+    .gold-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .slider-side {
+      min-width: 0;
+    }
+
+    .slide-frame {
+      height: 300px;
+      width: 100%;
+      border: 1px solid rgba(225,201,143,.65);
+      border-radius: 8px;
+      background: #0b2036;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .slide-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 4px;
+      opacity: 1;
+      transition: opacity .35s ease;
+    }
+
+    .slide-frame img.changing {
+      opacity: .15;
+    }
+
+    .slider-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      margin-top: 17px;
+    }
+
+    .arrow {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold-light);
+      font-size: 19px;
+    }
+
+    .arrow:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .dots {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border: 0;
+      border-radius: 50%;
+      background: #8190a0;
+      padding: 0;
+    }
+
+    .dot.active {
+      background: var(--gold-light);
+      transform: scale(1.3);
+    }
+
+    .slide-number {
+      color: #cbd5df;
+      font-size: 12px;
+      margin-inline-start: 5px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section.content-section {
+      padding: 75px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-heading .eyebrow {
+      color: #a47c35;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: 29px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 10px auto 0;
+    }
+
+    .about-section {
+      background: var(--light);
+    }
+
+    .about-text {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      font-size: 16px;
+      color: #526174;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 28px 23px;
+      border: 1px solid #e5e8ed;
+      border-top: 3px solid var(--gold);
+      background: #fff;
+      border-radius: 5px;
+      transition: .25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(7,24,43,.09);
+    }
+
+    .service-card h3 {
+      color: var(--navy);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .industries-section {
+      background: var(--navy);
+      color: white;
+    }
+
+    .industries-section .section-heading h2 {
+      color: white;
+    }
+
+    .industry-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .industry-item {
+      text-align: center;
+      padding: 23px 12px;
+      border: 1px solid rgba(225,201,143,.35);
+      border-radius: 5px;
+      color: #f3e8d0;
+    }
+
+    .training-box {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .training-box p {
+      color: var(--muted);
+      margin: 15px 0 25px;
+    }
+
+    .contact-section {
+      background: var(--light);
+      text-align: center;
+    }
+
+    .contact-section p {
+      color: var(--muted);
+      margin: 12px auto 24px;
+      max-width: 650px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #04111f;
+      color: #cbd4df;
+      padding: 35px 0 22px;
+      text-align: center;
+    }
+
+    footer img {
+      width: 175px;
+      max-height: 65px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #aab6c4;
+    }
+
+    .footer-line {
+      height: 1px;
+      background: rgba(198,161,91,.3);
+      margin: 20px 0;
+    }
+
+    /* RTL */
+
+    body.rtl nav {
+      direction: rtl;
+    }
+
+    body.rtl .hero-copy {
+      text-align: right;
+    }
+
+    body.rtl .hero-copy p {
+      margin-right: 0;
+    }
+
+    body.rtl .service-card {
+      text-align: right;
+    }
+
+    body.rtl .about-text {
+      direction: rtl;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+      .header-inner {
+        padding: 14px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .brand img {
+        width: 165px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 13px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 30px 0;
+      }
+
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .hero-copy {
+        text-align: center !important;
+      }
+
+      .hero-copy p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .slide-frame {
+        height: 245px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .industry-list {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      section.content-section {
+        padding: 55px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .slide-frame {
+        height: 205px;
+      }
+
+      .section-heading h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container navbar">
-    <a href="#home" class="brand" aria-label="RAMON GROUP Home">
+  <!-- HEADER -->
+  <header>
+    <div class="container header-inner">
+
+      <a class="brand" href="#home" aria-label="RAMON GROUP">
+        <img src="ramon-logo.png" alt="RAMON GROUP logo">
+      </a>
+
+      <nav>
+        <a href="#home" data-en="Home" data-fa="خانه">Home</a>
+        <a href="#about" data-en="About" data-fa="درباره ما">About</a>
+        <a href="#services" data-en="Services" data-fa="خدمات">Services</a>
+        <a href="#industries" data-en="Industries" data-fa="صنایع">Industries</a>
+        <a href="#training" data-en="Training" data-fa="آموزش">Training</a>
+        <a href="#contact" data-en="Contact" data-fa="تماس">Contact</a>
+        <button class="lang-btn" id="languageToggle" type="button">فارسی</button>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- HERO / SLIDER -->
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-layout">
+
+        <div class="hero-copy">
+          <div class="eyebrow" data-en="INTERNATIONAL PROJECT SERVICES" data-fa="خدمات بین‌المللی پروژه">
+            INTERNATIONAL PROJECT SERVICES
+          </div>
+
+          <h1 id="slideTitle">
+            Engineering Excellence. Project Success.
+          </h1>
+
+          <p id="slideDescription">
+            Professional project controls, planning, engineering consultancy and training for major industrial projects.
+          </p>
+
+          <a href="#services" class="gold-btn"
+             data-en="Explore Our Services"
+             data-fa="مشاهده خدمات">
+            Explore Our Services
+          </a>
+        </div>
+
+        <div class="slider-side">
+          <div class="slide-frame">
+            <img
+              id="heroImage"
+              src="Slide1.jfif"
+              alt="RAMON GROUP project portfolio"
+              fetchpriority="high"
+              decoding="async">
+          </div>
+
+          <div class="slider-controls">
+            <button class="arrow" id="prevSlide" type="button" aria-label="Previous slide">‹</button>
+            <div class="dots" id="sliderDots"></div>
+            <button class="arrow" id="nextSlide" type="button" aria-label="Next slide">›</button>
+            <span class="slide-number" id="slideNumber">01 / 04</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="content-section about-section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow" data-en="WHO WE ARE" data-fa="ما که هستیم">WHO WE ARE</div>
+          <h2 data-en="About RAMON GROUP" data-fa="درباره رامون گروپ">About RAMON GROUP</h2>
+        </div>
+
+        <p class="about-text"
+           data-en="RAMON GROUP provides professional project services with a focus on project controls, planning, engineering support and specialized training. Our approach is built on practical expertise, structured management and a commitment to project excellence."
+           data-fa="رامون گروپ ارائه‌دهنده خدمات تخصصی پروژه با تمرکز بر کنترل پروژه، برنامه‌ریزی، پشتیبانی مهندسی و آموزش‌های تخصصی است. رویکرد ما بر پایه دانش کاربردی، مدیریت ساختاریافته و تعهد به تعالی پروژه‌ها شکل گرفته است.">
+          RAMON GROUP provides professional project services with a focus on project controls, planning, engineering support and specialized training. Our approach is built on practical expertise, structured management and a commitment to project excellence.
+        </p>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="content-section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow" data-en="WHAT WE DO" data-fa="حوزه فعالیت ما">WHAT WE DO</div>
+          <h2 data-en="Our Services" data-fa="خدمات ما">Our Services</h2>
+          <p data-en="Integrated solutions to support successful project delivery."
+             data-fa="راهکارهای یکپارچه برای پشتیبانی از اجرای موفق پروژه‌ها.">
+            Integrated solutions to support successful project delivery.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="service-card">
+            <h3 data-en="Project Controls" data-fa="کنترل پروژه">Project Controls</h3>
+            <p data-en="Cost control, progress measurement, performance monitoring and project reporting."
+               data-fa="کنترل هزینه، اندازه‌گیری پیشرفت، پایش عملکرد و گزارش‌دهی پروژه.">
+              Cost control, progress measurement, performance monitoring and project reporting.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 data-en="Planning & Scheduling" data-fa="برنامه‌ریزی و زمان‌بندی">Planning & Scheduling</h3>
+            <p data-en="Project planning, schedule development, monitoring and delay analysis."
+               data-fa="برنامه‌ریزی پروژه، تهیه زمان‌بندی، پایش برنامه و تحلیل تأخیرات.">
+              Project planning, schedule development, monitoring and delay analysis.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 data-en="Engineering Consultancy" data-fa="مشاوره مهندسی">Engineering Consultancy</h3>
+            <p data-en="Professional support for engineering and industrial project management."
+               data-fa="ارائه پشتیبانی تخصصی در مدیریت پروژه‌های مهندسی و صنعتی.">
+              Professional support for engineering and industrial project management.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 data-en="Project Management" data-fa="مدیریت پروژه">Project Management</h3>
+            <p data-en="Structured project management solutions from initiation to completion."
+               data-fa="راهکارهای ساختاریافته مدیریت پروژه از آغاز تا تکمیل.">
+              Structured project management solutions from initiation to completion.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 data-en="Risk & Claims Management" data-fa="مدیریت ریسک و ادعا">Risk & Claims Management</h3>
+            <p data-en="Risk assessment, mitigation planning and claims support."
+               data-fa="ارزیابی ریسک، برنامه‌ریزی پاسخ و پشتیبانی مدیریت ادعاها.">
+              Risk assessment, mitigation planning and claims support.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h3>
+            <p data-en="Practical training programs in planning, scheduling and project controls."
+               data-fa="دوره‌های کاربردی در زمینه برنامه‌ریزی، زمان‌بندی و کنترل پروژه.">
+              Practical training programs in planning, scheduling and project controls.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section class="content-section industries-section" id="industries">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow" data-en="OUR EXPERIENCE" data-fa="حوزه‌های تخصصی">OUR EXPERIENCE</div>
+          <h2 data-en="Industries We Serve" data-fa="صنایع تحت پوشش">Industries We Serve</h2>
+        </div>
+
+        <div class="industry-list">
+          <div class="industry-item" data-en="Oil & Gas" data-fa="نفت و گاز">Oil & Gas</div>
+          <div class="industry-item" data-en="Petrochemical" data-fa="پتروشیمی">Petrochemical</div>
+          <div class="industry-item" data-en="Energy" data-fa="انرژی">Energy</div>
+          <div class="industry-item" data-en="Infrastructure" data-fa="زیرساخت">Infrastructure</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAINING -->
+    <section class="content-section" id="training">
+      <div class="container">
+        <div class="training-box">
+          <div class="section-heading">
+            <div class="eyebrow" data-en="KNOWLEDGE & DEVELOPMENT" data-fa="دانش و توسعه">KNOWLEDGE & DEVELOPMENT</div>
+            <h2 data-en="Training & Development" data-fa="آموزش و توسعه">Training & Development</h2>
+          </div>
+
+          <p data-en="We support professional growth through practical and industry-focused training in project planning, scheduling, project controls and management."
+             data-fa="ما از رشد حرفه‌ای افراد و سازمان‌ها از طریق آموزش‌های کاربردی و متناسب با صنعت در زمینه برنامه‌ریزی، زمان‌بندی، کنترل پروژه و مدیریت پشتیبانی می‌کنیم.">
+            We support professional growth through practical and industry-focused training in project planning, scheduling, project controls and management.
+          </p>
+
+          <a href="#contact" class="gold-btn"
+             data-en="Contact Us"
+             data-fa="ارتباط با ما">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="content-section contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow" data-en="LET'S WORK TOGETHER" data-fa="همکاری با ما">LET'S WORK TOGETHER</div>
+          <h2 data-en="Contact RAMON GROUP" data-fa="تماس با رامون گروپ">Contact RAMON GROUP</h2>
+        </div>
+
+        <p data-en="For project services, consultancy and professional training inquiries, get in touch with our team."
+           data-fa="برای دریافت خدمات پروژه، مشاوره و آموزش‌های تخصصی، با تیم ما در ارتباط باشید.">
+          For project services, consultancy and professional training inquiries, get in touch with our team.
+        </p>
+
+        <a href="mailto:info@learning-planning.ir" class="gold-btn"
+           data-en="Send an Email"
+           data-fa="ارسال ایمیل">
+          Send an Email
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
       <img src="ramon-logo.png" alt="RAMON GROUP">
-    </a>
 
-    <nav>
-      <a href="#home" data-en="Home" data-fa="صفحه اصلی">Home</a>
-      <a href="#about" data-en="About Us" data-fa="درباره ما">About Us</a>
-      <a href="#services" data-en="Services" data-fa="خدمات">Services</a>
-      <a href="#industries" data-en="Industries" data-fa="صنایع">Industries</a>
-      <a href="#training" data-en="Training" data-fa="آموزش">Training</a>
-      <a href="#contact" data-en="Contact" data-fa="تماس با ما">Contact</a>
-    </nav>
-
-    <button class="lang-btn" onclick="toggleLanguage()">فارسی</button>
-  </div>
-</header>
-
-<main>
-
-<!-- FOUR IMAGE HERO SLIDESHOW -->
-
-<section class="hero" id="home" aria-label="Project slideshow">
-
-  <div class="slides">
-
-    <div class="slide active">
-      <img src="Slide1.jfif" alt="Assaluyeh and South Pars petrochemical refinery">
-    </div>
-
-    <div class="slide">
-      <img src="Slide2.jfif" alt="Road construction and infrastructure projects in Iran">
-    </div>
-
-    <div class="slide">
-      <img src="Slide3.jfif" alt="Oil and gas transmission pipelines in Iran">
-    </div>
-
-    <div class="slide">
-      <img src="Slide4.jfif" alt="Building and civil engineering projects in Iran">
-    </div>
-
-  </div>
-
-  <div class="container hero-content">
-    <div class="eyebrow"
-      data-en="INTERNATIONAL PROJECT SERVICES"
-      data-fa="خدمات بین‌المللی پروژه">
-      INTERNATIONAL PROJECT SERVICES
-    </div>
-
-    <h1
-      data-en="Engineering Excellence. Project Success."
-      data-fa="تعالی مهندسی؛ موفقیت پروژه‌ها">
-      Engineering Excellence. Project Success.
-    </h1>
-
-    <p
-      data-en="Professional services in project planning, project controls, consulting and training for the energy and industrial sectors."
-      data-fa="ارائه خدمات تخصصی برنامه‌ریزی، کنترل پروژه، مشاوره و آموزش برای صنایع انرژی و پروژه‌های صنعتی.">
-      Professional services in project planning, project controls, consulting and training for the energy and industrial sectors.
-    </p>
-
-    <div>
-      <a href="#services" class="btn"
-        data-en="Explore Our Services"
-        data-fa="مشاهده خدمات">Explore Our Services</a>
-
-      <a href="#contact" class="btn btn-outline"
-        data-en="Contact Us"
-        data-fa="تماس با ما">Contact Us</a>
-    </div>
-  </div>
-
-  <button class="slider-arrow prev" onclick="changeSlide(-1)" aria-label="Previous slide">‹</button>
-  <button class="slider-arrow next" onclick="changeSlide(1)" aria-label="Next slide">›</button>
-
-  <div class="slider-dots">
-    <button class="dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
-    <button class="dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
-    <button class="dot" onclick="goToSlide(2)" aria-label="Slide 3"></button>
-    <button class="dot" onclick="goToSlide(3)" aria-label="Slide 4"></button>
-  </div>
-
-</section>
-
-<!-- SERVICES -->
-
-<section class="services" id="services">
-  <div class="container">
-    <div class="section-heading">
-      <div class="eyebrow" data-en="WHAT WE DO" data-fa="فعالیت‌های ما">WHAT WE DO</div>
-      <h2 data-en="Our Services" data-fa="خدمات ما">Our Services</h2>
-      <p
-        data-en="Supporting projects through professional expertise, structured planning and effective project management practices."
-        data-fa="پشتیبانی از پروژه‌ها با تکیه بر دانش تخصصی، برنامه‌ریزی ساختاریافته و روش‌های مؤثر مدیریت پروژه.">
-        Supporting projects through professional expertise, structured planning and effective project management practices.
-      </p>
-    </div>
-
-    <div class="cards">
-      <div class="card">
-        <div class="card-icon">📊</div>
-        <h3 data-en="Project Controls" data-fa="کنترل پروژه">Project Controls</h3>
-        <p
-          data-en="Project monitoring, performance measurement, cost control and reporting."
-          data-fa="پایش پروژه، اندازه‌گیری عملکرد، کنترل هزینه و تهیه گزارش‌های مدیریتی.">
-          Project monitoring, performance measurement, cost control and reporting.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">📅</div>
-        <h3 data-en="Planning & Scheduling" data-fa="برنامه‌ریزی و زمان‌بندی">Planning & Scheduling</h3>
-        <p
-          data-en="Project planning, scheduling, progress tracking and schedule analysis."
-          data-fa="برنامه‌ریزی پروژه، زمان‌بندی، پایش پیشرفت و تحلیل برنامه زمان‌بندی.">
-          Project planning, scheduling, progress tracking and schedule analysis.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🤝</div>
-        <h3 data-en="Consulting" data-fa="مشاوره">Consulting</h3>
-        <p
-          data-en="Professional advisory services for project management and control systems."
-          data-fa="ارائه خدمات مشاوره تخصصی در مدیریت پروژه و سیستم‌های کنترل پروژه.">
-          Professional advisory services for project management and control systems.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🎓</div>
-        <h3 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h3>
-        <p
-          data-en="Practical learning and professional development in project management disciplines."
-          data-fa="آموزش کاربردی و توسعه مهارت‌های حرفه‌ای در حوزه مدیریت پروژه.">
-          Practical learning and professional development in project management disciplines.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-
-<section id="about">
-  <div class="container about-grid">
-    <div class="about-image"></div>
-
-    <div class="about-text">
-      <div class="eyebrow" data-en="ABOUT RAMON GROUP" data-fa="درباره رامون گروپ">ABOUT RAMON GROUP</div>
-
-      <h2
-        data-en="A Professional Approach to Project Services"
-        data-fa="نگاهی حرفه‌ای به خدمات پروژه">
-        A Professional Approach to Project Services
-      </h2>
-
-      <p
-        data-en="RAMON GROUP focuses on project services, planning, project controls, consulting and professional training for energy and industrial projects."
-        data-fa="رامون گروپ با تمرکز بر خدمات پروژه، برنامه‌ریزی، کنترل پروژه، مشاوره و آموزش تخصصی در پروژه‌های انرژی و صنعتی فعالیت می‌کند.">
-        RAMON GROUP focuses on project services, planning, project controls, consulting and professional training for energy and industrial projects.
+      <p data-en="INTERNATIONAL PROJECT SERVICES"
+         data-fa="خدمات بین‌المللی پروژه">
+        INTERNATIONAL PROJECT SERVICES
       </p>
 
-      <p
-        data-en="Our approach is built around structured processes, informed decisions and a commitment to professional development."
-        data-fa="رویکرد ما بر پایه فرآیندهای ساختاریافته، تصمیم‌گیری آگاهانه و توسعه دانش و مهارت‌های حرفه‌ای است.">
-        Our approach is built around structured processes, informed decisions and a commitment to professional development.
+      <div class="footer-line"></div>
+
+      <p>
+        © <span id="year"></span> RAMON GROUP.
+        <span data-en="All Rights Reserved." data-fa="تمامی حقوق محفوظ است.">All Rights Reserved.</span>
       </p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- INDUSTRIES -->
+  <script>
+    // SLIDER CONTENT
+    const slides = [
+      {
+        image: "Slide1.jfif",
+        alt: "Assaluyeh and South Pars industrial facilities",
+        titleEn: "Engineering Excellence. Project Success.",
+        descEn: "Professional project controls, planning, engineering consultancy and training for major industrial projects.",
+        titleFa: "تعالی مهندسی؛ موفقیت پروژه‌ها",
+        descFa: "خدمات تخصصی کنترل پروژه، برنامه‌ریزی، مشاوره مهندسی و آموزش برای پروژه‌های بزرگ صنعتی."
+      },
+      {
+        image: "Slide2.jfif",
+        alt: "Road construction and infrastructure project",
+        titleEn: "Building Infrastructure for Tomorrow",
+        descEn: "Supporting infrastructure projects through effective planning, monitoring and project management.",
+        titleFa: "ساخت زیرساخت برای آینده",
+        descFa: "پشتیبانی از پروژه‌های زیرساختی از طریق برنامه‌ریزی مؤثر، پایش و مدیریت پروژه."
+      },
+      {
+        image: "Slide3.jfif",
+        alt: "Oil and gas transmission pipeline project",
+        titleEn: "Connecting Energy. Managing Progress.",
+        descEn: "Project services for energy, pipeline and industrial development projects.",
+        titleFa: "پیوند انرژی؛ مدیریت پیشرفت",
+        descFa: "ارائه خدمات پروژه برای طرح‌های انرژی، خطوط انتقال و توسعه صنعتی."
+      },
+      {
+        image: "Slide4.jfif",
+        alt: "Building and civil engineering project",
+        titleEn: "Delivering Projects with Confidence",
+        descEn: "Practical project management and professional expertise for complex construction projects.",
+        titleFa: "اجرای مطمئن پروژه‌ها",
+        descFa: "مدیریت کاربردی پروژه و تخصص حرفه‌ای برای پروژه‌های پیچیده ساختمانی و عمرانی."
+      }
+    ];
 
-<section class="industries" id="industries">
-  <div class="container">
-    <div class="section-heading">
-      <div class="eyebrow" data-en="OUR INDUSTRIES" data-fa="حوزه‌های تخصصی">OUR INDUSTRIES</div>
-      <h2 data-en="Industries We Focus On" data-fa="صنایع مورد تمرکز ما">Industries We Focus On</h2>
-      <p
-        data-en="Project services designed for complex industrial environments."
-        data-fa="خدمات پروژه متناسب با محیط‌های پیچیده صنعتی.">
-        Project services designed for complex industrial environments.
-      </p>
-    </div>
+    let currentSlide = 0;
+    let currentLanguage = "en";
+    let sliderTimer = null;
 
-    <div class="industry-grid">
-      <div class="industry">
-        <h3 data-en="Oil & Gas" data-fa="نفت و گاز">Oil & Gas</h3>
-        <p
-          data-en="Upstream, midstream and downstream projects."
-          data-fa="پروژه‌های بالادستی، میان‌دستی و پایین‌دستی.">
-          Upstream, midstream and downstream projects.
-        </p>
-      </div>
+    const heroImage = document.getElementById("heroImage");
+    const slideTitle = document.getElementById("slideTitle");
+    const slideDescription = document.getElementById("slideDescription");
+    const slideNumber = document.getElementById("slideNumber");
+    const dotsContainer = document.getElementById("sliderDots");
 
-      <div class="industry">
-        <h3 data-en="Petrochemical" data-fa="پتروشیمی">Petrochemical</h3>
-        <p
-          data-en="Petrochemical plants and industrial facilities."
-          data-fa="مجتمع‌های پتروشیمی و تأسیسات صنعتی.">
-          Petrochemical plants and industrial facilities.
-        </p>
-      </div>
+    function renderDots() {
+      dotsContainer.innerHTML = "";
 
-      <div class="industry">
-        <h3 data-en="Energy & Infrastructure" data-fa="انرژی و زیرساخت">Energy & Infrastructure</h3>
-        <p
-          data-en="Energy infrastructure and major industrial projects."
-          data-fa="زیرساخت‌های انرژی و پروژه‌های بزرگ صنعتی.">
-          Energy infrastructure and major industrial projects.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+      slides.forEach((slide, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "dot" + (index === currentSlide ? " active" : "");
+        dot.setAttribute("aria-label", "Show slide " + (index + 1));
 
-<!-- TRAINING -->
+        dot.addEventListener("click", () => {
+          showSlide(index);
+          restartTimer();
+        });
 
-<section class="training" id="training">
-  <div class="container">
-    <div class="section-heading">
-      <div class="eyebrow" data-en="LEARNING & DEVELOPMENT" data-fa="یادگیری و توسعه">LEARNING & DEVELOPMENT</div>
-      <h2 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h2>
-    </div>
+        dotsContainer.appendChild(dot);
+      });
+    }
 
-    <div class="training-box">
-      <h3
-        data-en="Build Your Project Management Skills"
-        data-fa="مهارت‌های مدیریت پروژه خود را توسعه دهید">
-        Build Your Project Management Skills
-      </h3>
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      const slide = slides[currentSlide];
 
-      <p
-        data-en="Explore professional learning opportunities in project planning, scheduling, project controls and project management."
-        data-fa="فرصت‌های یادگیری تخصصی در برنامه‌ریزی، زمان‌بندی، کنترل پروژه و مدیریت پروژه را دنبال کنید.">
-        Explore professional learning opportunities in project planning, scheduling, project controls and project management.
-      </p>
+      heroImage.classList.add("changing");
 
-      <a href="#contact" class="btn"
-        data-en="Training Enquiries"
-        data-fa="درخواست اطلاعات آموزش">Training Enquiries</a>
-    </div>
-  </div>
-</section>
+      const nextImage = new Image();
 
-<!-- CONTACT -->
+      nextImage.onload = function() {
+        heroImage.src = slide.image;
+        heroImage.alt = slide.alt;
+        heroImage.classList.remove("changing");
+      };
 
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="eyebrow" data-en="GET IN TOUCH" data-fa="با ما در ارتباط باشید">GET IN TOUCH</div>
+      nextImage.onerror = function() {
+        heroImage.classList.remove("changing");
+        console.warn("Could not load image:", slide.image);
+      };
 
-    <h2
-      data-en="Let's Discuss Your Project"
-      data-fa="درباره پروژه خود با ما گفتگو کنید">
-      Let's Discuss Your Project
-    </h2>
+      nextImage.src = slide.image;
 
-    <p
-      data-en="Contact RAMON GROUP for project services, consulting and professional training enquiries."
-      data-fa="برای دریافت اطلاعات درباره خدمات پروژه، مشاوره و آموزش تخصصی با رامون گروپ در ارتباط باشید.">
-      Contact RAMON GROUP for project services, consulting and professional training enquiries.
-    </p>
+      slideTitle.textContent =
+        currentLanguage === "fa" ? slide.titleFa : slide.titleEn;
 
-    <a href="mailto:" class="btn"
-      data-en="Contact Our Team"
-      data-fa="ارتباط با مجموعه">Contact Our Team</a>
-  </div>
-</section>
+      slideDescription.textContent =
+        currentLanguage === "fa" ? slide.descFa : slide.descEn;
 
-</main>
+      slideNumber.textContent =
+        String(currentSlide + 1).padStart(2, "0") + " / 04";
 
-<!-- FOOTER -->
+      renderDots();
+    }
 
-<footer>
-  <div class="container">
-    <img src="ramon-logo.png" alt="RAMON GROUP" class="footer-logo">
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
 
-    <div class="footer-tagline">INTERNATIONAL PROJECT SERVICES</div>
+    function previousSlide() {
+      showSlide(currentSlide - 1);
+    }
 
-    <div class="copyright">
-      © <span id="year"></span> RAMON GROUP. All Rights Reserved.
-    </div>
-  </div>
-</footer>
+    function startTimer() {
+      clearInterval(sliderTimer);
+      sliderTimer = setInterval(nextSlide, 5000);
+    }
 
-<script>
-/* LANGUAGE SWITCHER */
+    function restartTimer() {
+      startTimer();
+    }
 
-let currentLanguage = "en";
+    document.getElementById("nextSlide").addEventListener("click", () => {
+      nextSlide();
+      restartTimer();
+    });
 
-function toggleLanguage() {
-  currentLanguage = currentLanguage === "en" ? "fa" : "en";
+    document.getElementById("prevSlide").addEventListener("click", () => {
+      previousSlide();
+      restartTimer();
+    });
 
-  document.documentElement.lang = currentLanguage;
-  document.documentElement.dir = currentLanguage === "fa" ? "rtl" : "ltr";
+    // LANGUAGE SWITCH
+    function setLanguage(language) {
+      currentLanguage = language;
 
-  document.querySelectorAll("[data-en]").forEach(element => {
-    element.textContent = element.getAttribute("data-" + currentLanguage);
-  });
+      const isPersian = language === "fa";
 
-  document.querySelector(".lang-btn").textContent =
-    currentLanguage === "en" ? "فارسی" : "English";
+      document.documentElement.lang = language;
+      document.documentElement.dir = isPersian ? "rtl" : "ltr";
+      document.body.classList.toggle("rtl", isPersian);
 
-  document.title = currentLanguage === "en"
-    ? "RAMON GROUP | International Project Services"
-    : "رامون گروپ | خدمات بین‌المللی پروژه";
-}
+      document.querySelectorAll("[data-en][data-fa]").forEach(element => {
+        element.textContent = isPersian
+          ? element.getAttribute("data-fa")
+          : element.getAttribute("data-en");
+      });
 
-/* SLIDESHOW */
+      document.getElementById("languageToggle").textContent =
+        isPersian ? "English" : "فارسی";
 
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
+      showSlide(currentSlide);
+    }
 
-let currentSlide = 0;
-let slideTimer;
+    document.getElementById("languageToggle").addEventListener("click", () => {
+      setLanguage(currentLanguage === "en" ? "fa" : "en");
+    });
 
-function showSlide(index) {
-  currentSlide = (index + slides.length) % slides.length;
+    // INITIALIZE
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === currentSlide);
-  });
-
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === currentSlide);
-  });
-}
-
-function changeSlide(direction) {
-  showSlide(currentSlide + direction);
-  restartTimer();
-}
-
-function goToSlide(index) {
-  showSlide(index);
-  restartTimer();
-}
-
-function startTimer() {
-  slideTimer = setInterval(() => {
-    showSlide(currentSlide + 1);
-  }, 5000);
-}
-
-function restartTimer() {
-  clearInterval(slideTimer);
-  startTimer();
-}
-
-startTimer();
-
-/* CURRENT YEAR */
-
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-</script>
+    renderDots();
+    showSlide(0);
+    startTimer();
+  </script>
 
 </body>
 </html>
