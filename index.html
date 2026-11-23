@@ -720,7 +720,14 @@ section{padding:65px 0}
         <input id="studentPhone" type="tel" placeholder="شماره موبایل" required>
         <input id="studentJob" type="text" placeholder="شغل و سمت سازمانی">
         <input id="studentExperience" type="text" placeholder="سابقه کاری">
-        <input id="selectedCourse" type="text" placeholder="دوره انتخابی" readonly required>
+        
+<select id="selectedCourse" required>
+  <option value="">لطفاً دوره موردنظر را انتخاب کنید</option>
+  <option value="MSP - 7,777,000 تومان">آموزش حرفه‌ای و پیشرفته برنامه‌ریزی و کنترل پروژه با MSP</option>
+  <option value="Primavera P6 - 9,980,000 تومان">آموزش حرفه‌ای و پیشرفته برنامه‌ریزی و کنترل پروژه با Primavera P6</option>
+  <option value="Claims Management - 6,890,000 تومان">آموزش حرفه‌ای و پیشرفته مدیریت ادعا و کلیم</option>
+</select>
+
         <textarea id="studentDescription" placeholder="توضیحات شما"></textarea>
         <label for="studentFile">بارگذاری رزومه (اختیاری)</label>
         <input id="studentFile" type="file" accept=".pdf,.doc,.docx">
