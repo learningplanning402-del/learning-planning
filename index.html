@@ -4,17 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="description" content="RAMON GROUP - International Project Services. Planning, Project Controls, Consulting and Professional Training.">
-<meta name="theme-color" content="#081b33"> <link rel="icon" type="image/png" href="ramon-profile.png">
+<meta name="theme-color" content="#081b33">
+
+<!-- Website profile icon -->
+<link rel="icon" type="image/png" href="ramon-profile.png">
+<link rel="apple-touch-icon" href="ramon-profile.png">
+
 <title>RAMON GROUP | International Project Services</title>
 
-<style>.hero-logo {
-  width: 280px;
-  max-width: 80%;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 28px;
-}
+<style>
 :root {
   --navy: #081b33;
   --navy2: #102c4d;
@@ -24,9 +24,16 @@
   --white: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
+}
 
 body {
   font-family: Arial, Tahoma, sans-serif;
@@ -35,12 +42,17 @@ body {
   background: var(--white);
 }
 
-a { text-decoration: none; color: inherit; }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 .container {
   width: min(1120px, 90%);
   margin: auto;
 }
+
+/* HEADER */
 
 header {
   background: var(--navy);
@@ -48,11 +60,12 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(201,163,77,.3);
+  border-bottom: 1px solid rgba(201,163,77,.4);
+  box-shadow: 0 5px 25px rgba(0,0,0,.12);
 }
 
 .navbar {
-  min-height: 82px;
+  min-height: 88px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,36 +73,33 @@ header {
 }
 
 .brand {
-  color: white;
-  font-size: 25px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
-.brand span { color: var(--gold); }
-
-.brand small {
+.brand img {
   display: block;
-  font-size: 9px;
-  letter-spacing: 2px;
-  font-weight: normal;
-  color: #d8dce3;
+  width: 175px;
+  height: 70px;
+  object-fit: contain;
 }
 
 nav {
   display: flex;
   align-items: center;
-  gap: 23px;
+  gap: 22px;
 }
 
 nav a {
   font-size: 13px;
   color: #e7ebf1;
-  transition: .2s;
+  transition: .25s;
 }
 
-nav a:hover { color: var(--gold); }
+nav a:hover {
+  color: var(--gold);
+}
 
 .lang-btn {
   border: 1px solid var(--gold);
@@ -99,24 +109,43 @@ nav a:hover { color: var(--gold); }
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  transition: .25s;
 }
+
+.lang-btn:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* HERO */
 
 .hero {
   background:
-    linear-gradient(90deg, rgba(5,20,39,.95), rgba(5,20,39,.67)),
+    linear-gradient(90deg, rgba(5,20,39,.94), rgba(5,20,39,.70)),
     url("https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=2000&q=85");
   background-position: center;
   background-size: cover;
   color: white;
-  min-height: 570px;
+  min-height: 620px;
   display: flex;
   align-items: center;
 }
 
-.hero-content { max-width: 720px; padding: 85px 0; }
-<img src="ramon-logo.png"
-     alt="RAMON GROUP"
-     class="hero-logo">
+.hero-content {
+  max-width: 760px;
+  padding: 85px 0;
+}
+
+.hero-logo {
+  display: block;
+  width: 260px;
+  max-width: 80%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 30px;
+  border-radius: 4px;
+}
+
 .eyebrow {
   color: var(--gold);
   letter-spacing: 3px;
@@ -145,10 +174,13 @@ nav a:hover { color: var(--gold); }
   padding: 13px 25px;
   border-radius: 4px;
   font-weight: bold;
-  transition: .2s;
+  transition: .25s;
 }
 
-.btn:hover { background: #e1bd70; transform: translateY(-2px); }
+.btn:hover {
+  background: #e1bd70;
+  transform: translateY(-2px);
+}
 
 .btn-outline {
   background: transparent;
@@ -157,14 +189,20 @@ nav a:hover { color: var(--gold); }
   margin-inline-start: 10px;
 }
 
-section { padding: 85px 0; }
+/* GENERAL SECTIONS */
+
+section {
+  padding: 85px 0;
+}
 
 .section-heading {
   text-align: center;
   margin-bottom: 45px;
 }
 
-.section-heading .eyebrow { margin-bottom: 8px; }
+.section-heading .eyebrow {
+  margin-bottom: 8px;
+}
 
 .section-heading h2 {
   color: var(--navy);
@@ -178,7 +216,11 @@ section { padding: 85px 0; }
   color: #667487;
 }
 
-.services { background: var(--light); }
+/* SERVICES */
+
+.services {
+  background: var(--light);
+}
 
 .cards {
   display: grid;
@@ -195,7 +237,10 @@ section { padding: 85px 0; }
   transition: .25s;
 }
 
-.card:hover { transform: translateY(-6px); }
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(10,30,55,.12);
+}
 
 .card-icon {
   font-size: 31px;
@@ -208,7 +253,12 @@ section { padding: 85px 0; }
   margin-bottom: 12px;
 }
 
-.card p { color: #697789; font-size: 14px; }
+.card p {
+  color: #697789;
+  font-size: 14px;
+}
+
+/* ABOUT */
 
 .about-grid {
   display: grid;
@@ -237,13 +287,20 @@ section { padding: 85px 0; }
   margin-bottom: 18px;
 }
 
+/* INDUSTRIES */
+
 .industries {
   background: var(--navy);
   color: white;
 }
 
-.industries .section-heading h2 { color: white; }
-.industries .section-heading p { color: #c7d0dd; }
+.industries .section-heading h2 {
+  color: white;
+}
+
+.industries .section-heading p {
+  color: #c7d0dd;
+}
 
 .industry-grid {
   display: grid;
@@ -256,12 +313,29 @@ section { padding: 85px 0; }
   text-align: center;
   border: 1px solid rgba(201,163,77,.4);
   border-radius: 8px;
+  transition: .25s;
 }
 
-.industry h3 { color: var(--gold); margin-bottom: 8px; }
-.industry p { color: #d0d8e2; font-size: 14px; }
+.industry:hover {
+  background: rgba(255,255,255,.04);
+  transform: translateY(-4px);
+}
 
-.training { background: var(--light); }
+.industry h3 {
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.industry p {
+  color: #d0d8e2;
+  font-size: 14px;
+}
+
+/* TRAINING */
+
+.training {
+  background: var(--light);
+}
 
 .training-box {
   max-width: 800px;
@@ -280,7 +354,12 @@ section { padding: 85px 0; }
   margin-bottom: 15px;
 }
 
-.training-box p { color: #647286; margin-bottom: 25px; }
+.training-box p {
+  color: #647286;
+  margin-bottom: 25px;
+}
+
+/* CONTACT */
 
 .contact {
   background: white;
@@ -298,59 +377,142 @@ section { padding: 85px 0; }
   margin-bottom: 25px;
 }
 
-footer {<img src="ramon-logo.png"
-     alt="RAMON GROUP"
-     class="footer-logo">
+/* FOOTER */
+
+footer {
   background: #051426;
   color: #c5ceda;
-  padding: 28px 0;
+  padding: 40px 0;
   text-align: center;
   font-size: 13px;
+  border-top: 2px solid var(--gold);
 }
 
-footer strong { color: var(--gold); }
+.footer-logo {
+  display: block;
+  width: 170px;
+  max-width: 75%;
+  height: auto;
+  margin: 0 auto 20px;
+  border-radius: 4px;
+}
 
-[dir="rtl"] body { font-family: Tahoma, Arial, sans-serif; }
-[dir="rtl"] .eyebrow { letter-spacing: 0; }
+footer strong {
+  color: var(--gold);
+}
+
+/* PERSIAN / RTL */
+
+[dir="rtl"] body {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+[dir="rtl"] .eyebrow {
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .hero-content,
+[dir="rtl"] .about-text {
+  text-align: right;
+}
+
+/* RESPONSIVE */
 
 @media(max-width: 900px) {
-  nav { gap: 12px; }
-  nav a { font-size: 11px; }
-  .cards { grid-template-columns: repeat(2, 1fr); }
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .brand img {
+    width: 150px;
+  }
 }
 
 @media(max-width: 650px) {
-  .navbar { flex-wrap: wrap; padding: 15px 0; }
-  nav { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; }
-  .brand { font-size: 21px; }
-  .hero { min-height: 500px; }
-  .hero-content { padding: 65px 0; }
-  .hero p { font-size: 15px; }
-  .about-grid { grid-template-columns: 1fr; gap: 28px; }
-  .about-image { min-height: 250px; }
-  .industry-grid { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: 1fr; }
-  section { padding: 60px 0; }
-  .training-box { padding: 28px 20px; }
+  .navbar {
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .brand img {
+    width: 135px;
+    height: 58px;
+  }
+
+  .hero {
+    min-height: 540px;
+  }
+
+  .hero-content {
+    padding: 65px 0;
+  }
+
+  .hero-logo {
+    width: 210px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-image {
+    min-height: 250px;
+  }
+
+  .industry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .training-box {
+    padding: 28px 20px;
+  }
+
+  .section-heading h2,
+  .about-text h2,
+  .contact h2 {
+    font-size: 28px;
+  }
 }
-</style>.footer-logo {
-  display: block;
-  width: 180px;
-  max-width: 75%;
-  height: auto;
-  margin: 0 auto 18px;
-}
-   .brand { display: flex; align-items: center; }
-   .brand img { width: 190px; height: 70px; object-fit: contain;display: block; }
+</style>
 </head>
 
 <body>
 
 <header>
   <div class="container navbar">
+
+    <!-- HEADER LOGO -->
     <a href="#home" class="brand">
-  <img src="ramon-logo.png" alt="RAMON GROUP Logo">
-</a>
+      <img src="ramon-logo.png" alt="RAMON GROUP Logo">
+    </a>
 
     <nav>
       <a href="#home" data-en="Home" data-fa="صفحه اصلی">Home</a>
@@ -362,14 +524,25 @@ footer strong { color: var(--gold); }
     </nav>
 
     <button class="lang-btn" onclick="toggleLanguage()">فارسی</button>
+
   </div>
 </header>
 
 <main>
+
+<!-- HOME -->
 <section class="hero" id="home">
   <div class="container">
     <div class="hero-content">
-      <div class="eyebrow" data-en="INTERNATIONAL PROJECT SERVICES" data-fa="خدمات بین‌المللی پروژه">
+
+      <!-- MAIN HOME LOGO -->
+      <img src="ramon-logo.png"
+           alt="RAMON GROUP"
+           class="hero-logo">
+
+      <div class="eyebrow"
+           data-en="INTERNATIONAL PROJECT SERVICES"
+           data-fa="خدمات بین‌المللی پروژه">
         INTERNATIONAL PROJECT SERVICES
       </div>
 
@@ -383,14 +556,22 @@ footer strong { color: var(--gold); }
         Professional services in project planning, project controls, consulting and training for the energy and industrial sectors.
       </p>
 
-      <a href="#services" class="btn" data-en="Explore Our Services" data-fa="مشاهده خدمات">Explore Our Services</a>
-      <a href="#contact" class="btn btn-outline" data-en="Contact Us" data-fa="تماس با ما">Contact Us</a>
+      <a href="#services" class="btn"
+         data-en="Explore Our Services"
+         data-fa="مشاهده خدمات">Explore Our Services</a>
+
+      <a href="#contact" class="btn btn-outline"
+         data-en="Contact Us"
+         data-fa="تماس با ما">Contact Us</a>
+
     </div>
   </div>
 </section>
 
+<!-- SERVICES -->
 <section class="services" id="services">
   <div class="container">
+
     <div class="section-heading">
       <div class="eyebrow" data-en="WHAT WE DO" data-fa="فعالیت‌های ما">WHAT WE DO</div>
       <h2 data-en="Our Services" data-fa="خدمات ما">Our Services</h2>
@@ -401,6 +582,7 @@ footer strong { color: var(--gold); }
     </div>
 
     <div class="cards">
+
       <div class="card">
         <div class="card-icon">📊</div>
         <h3 data-en="Project Controls" data-fa="کنترل پروژه">Project Controls</h3>
@@ -436,33 +618,43 @@ footer strong { color: var(--gold); }
           Practical learning and professional development in project management disciplines.
         </p>
       </div>
+
     </div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="container about-grid">
+
     <div class="about-image"></div>
+
     <div class="about-text">
       <div class="eyebrow" data-en="ABOUT RAMON GROUP" data-fa="درباره رامون گروپ">ABOUT RAMON GROUP</div>
+
       <h2 data-en="A Professional Approach to Project Services"
           data-fa="نگاهی حرفه‌ای به خدمات پروژه">
         A Professional Approach to Project Services
       </h2>
+
       <p data-en="RAMON GROUP focuses on project services, planning, project controls, consulting and professional training for energy and industrial projects."
          data-fa="رامون گروپ با تمرکز بر خدمات پروژه، برنامه‌ریزی، کنترل پروژه، مشاوره و آموزش تخصصی در پروژه‌های انرژی و صنعتی فعالیت می‌کند.">
         RAMON GROUP focuses on project services, planning, project controls, consulting and professional training for energy and industrial projects.
       </p>
+
       <p data-en="Our approach is built around structured processes, informed decisions and a commitment to professional development."
          data-fa="رویکرد ما بر پایه فرآیندهای ساختاریافته، تصمیم‌گیری آگاهانه و توسعه دانش و مهارت‌های حرفه‌ای است.">
         Our approach is built around structured processes, informed decisions and a commitment to professional development.
       </p>
     </div>
+
   </div>
 </section>
 
+<!-- INDUSTRIES -->
 <section class="industries" id="industries">
   <div class="container">
+
     <div class="section-heading">
       <div class="eyebrow" data-en="OUR INDUSTRIES" data-fa="حوزه‌های تخصصی">OUR INDUSTRIES</div>
       <h2 data-en="Industries We Focus On" data-fa="صنایع مورد تمرکز ما">Industries We Focus On</h2>
@@ -473,6 +665,7 @@ footer strong { color: var(--gold); }
     </div>
 
     <div class="industry-grid">
+
       <div class="industry">
         <h3 data-en="Oil & Gas" data-fa="نفت و گاز">Oil & Gas</h3>
         <p data-en="Upstream, midstream and downstream projects."
@@ -496,12 +689,15 @@ footer strong { color: var(--gold); }
           Energy infrastructure and industrial projects.
         </p>
       </div>
+
     </div>
   </div>
 </section>
 
+<!-- TRAINING -->
 <section class="training" id="training">
   <div class="container">
+
     <div class="section-heading">
       <div class="eyebrow" data-en="LEARNING & DEVELOPMENT" data-fa="یادگیری و توسعه">LEARNING & DEVELOPMENT</div>
       <h2 data-en="Professional Training" data-fa="آموزش تخصصی">Professional Training</h2>
@@ -512,37 +708,60 @@ footer strong { color: var(--gold); }
           data-fa="مهارت‌های مدیریت پروژه خود را توسعه دهید">
         Build Your Project Management Skills
       </h3>
+
       <p data-en="Explore professional learning opportunities in project planning, scheduling, project controls and project management."
          data-fa="فرصت‌های یادگیری تخصصی در برنامه‌ریزی، زمان‌بندی، کنترل پروژه و مدیریت پروژه را دنبال کنید.">
         Explore professional learning opportunities in project planning, scheduling, project controls and project management.
       </p>
-      <a href="#contact" class="btn" data-en="Training Enquiries" data-fa="درخواست اطلاعات آموزش">Training Enquiries</a>
+
+      <a href="#contact" class="btn"
+         data-en="Training Enquiries"
+         data-fa="درخواست اطلاعات آموزش">Training Enquiries</a>
     </div>
+
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="container">
+
     <div class="eyebrow" data-en="GET IN TOUCH" data-fa="با ما در ارتباط باشید">GET IN TOUCH</div>
+
     <h2 data-en="Let's Discuss Your Project"
         data-fa="درباره پروژه خود با ما گفتگو کنید">
       Let's Discuss Your Project
     </h2>
+
     <p data-en="Contact RAMON GROUP for project services, consulting and professional training enquiries."
        data-fa="برای دریافت اطلاعات درباره خدمات پروژه، مشاوره و آموزش تخصصی با رامون گروپ در ارتباط باشید.">
       Contact RAMON GROUP for project services, consulting and professional training enquiries.
     </p>
-    <a href="mailto:" class="btn" data-en="Contact Our Team" data-fa="ارتباط با مجموعه">Contact Our Team</a>
+
+    <a href="#contact" class="btn"
+       data-en="Contact Our Team"
+       data-fa="ارتباط با مجموعه">Contact Our Team</a>
+
   </div>
 </section>
+
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="container">
-    <strong>RAMON GROUP</strong> |
-    INTERNATIONAL PROJECT SERVICES
+
+    <!-- FOOTER LOGO -->
+    <img src="ramon-logo.png"
+         alt="RAMON GROUP"
+         class="footer-logo">
+
+    <strong>RAMON GROUP</strong>
     <br>
+    INTERNATIONAL PROJECT SERVICES
+    <br><br>
     © <span id="year"></span> RAMON GROUP. All Rights Reserved.
+
   </div>
 </footer>
 
@@ -553,10 +772,12 @@ function toggleLanguage() {
   currentLanguage = currentLanguage === "en" ? "fa" : "en";
 
   document.documentElement.lang = currentLanguage;
-  document.documentElement.dir = currentLanguage === "fa" ? "rtl" : "ltr";
+  document.documentElement.dir =
+    currentLanguage === "fa" ? "rtl" : "ltr";
 
   document.querySelectorAll("[data-en]").forEach(element => {
-    element.textContent = element.getAttribute("data-" + currentLanguage);
+    element.textContent =
+      element.getAttribute("data-" + currentLanguage);
   });
 
   document.querySelector(".lang-btn").textContent =
@@ -567,7 +788,8 @@ function toggleLanguage() {
     : "رامون گروپ | خدمات بین‌المللی پروژه";
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 </script>
 
 </body>
