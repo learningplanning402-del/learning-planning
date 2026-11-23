@@ -676,7 +676,168 @@ section{padding:65px 0}
 </div>
 </section>
 
-<section class="contact" id="contact">
+
+<section class="courses" id="courses">
+  <div class="container">
+    <div class="section-title">
+      <h2>دوره‌های آموزشی | Training Courses</h2>
+      <p>Professional Project Management Training</p>
+    </div>
+
+    <div class="course-grid">
+      <div class="course-card">
+        <span class="course-tag">SPECIAL DISCOUNT</span>
+        <h3>آموزش حرفه‌ای و پیشرفته برنامه‌ریزی و کنترل پروژه با MSP</h3>
+        <p>Professional & Advanced Project Planning and Control with Microsoft Project</p>
+        <p class="old-price">۱۵٬۹۰۰٬۰۰۰ تومان</p>
+        <p class="new-price">۷٬۷۷۷٬۰۰۰ تومان</p>
+        <button type="button" onclick="selectCourse('MSP','۷٬۷۷۷٬۰۰۰ تومان')">استعلام و ثبت‌نام</button>
+      </div>
+
+      <div class="course-card">
+        <span class="course-tag">SPECIAL DISCOUNT</span>
+        <h3>آموزش برنامه‌ریزی و کنترل پروژه با Primavera P6</h3>
+        <p>Project Planning and Control with Primavera P6</p>
+        <p class="old-price">۱۹٬۹۸۰٬۰۰۰ تومان</p>
+        <p class="new-price">۹٬۹۸۰٬۰۰۰ تومان</p>
+        <button type="button" onclick="selectCourse('Primavera P6','۹٬۹۸۰٬۰۰۰ تومان')">استعلام و ثبت‌نام</button>
+      </div>
+    </div>
+
+    <div class="registration-box" id="registration">
+      <h3>فرم درخواست ثبت‌نام | Registration Form</h3>
+      <form id="courseForm">
+        <input id="studentName" type="text" placeholder="نام و نام خانوادگی" required>
+        <input id="studentPhone" type="tel" placeholder="شماره موبایل" required>
+        <input id="studentJob" type="text" placeholder="شغل و سمت سازمانی">
+        <input id="studentExperience" type="text" placeholder="سابقه کاری">
+        <input id="selectedCourse" type="text" placeholder="دوره انتخابی" readonly required>
+        <textarea id="studentDescription" placeholder="توضیحات شما"></textarea>
+        <label for="studentFile">بارگذاری رزومه (اختیاری)</label>
+        <input id="studentFile" type="file" accept=".pdf,.doc,.docx">
+        <button type="submit">ارسال درخواست ثبت‌نام</button>
+      </form>
+      <p>پس از ثبت درخواست، گفت‌وگوی بله باز می‌شود. لطفاً پیام را ارسال کنید و رزومه خود را در همان گفت‌وگو پیوست کنید.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.courses {
+  padding: 75px 20px;
+  background: #f7f7f5;
+  color: #17243a;
+  direction: rtl;
+}
+.courses .container {
+  max-width: 1100px;
+  margin: auto;
+}
+.courses .section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.courses .section-title h2 {
+  color: #b08b43;
+  font-size: 30px;
+}
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 25px;
+}
+.course-card, .registration-box {
+  background: white;
+  border: 1px solid #d9c18e;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.06);
+}
+.course-card h3 {
+  line-height: 1.9;
+}
+.course-tag {
+  color: #9c7835;
+  font-size: 12px;
+  font-weight: bold;
+}
+.old-price {
+  color: #888;
+  text-decoration: line-through;
+}
+.new-price {
+  color: #a47d31;
+  font-size: 25px;
+  font-weight: bold;
+}
+.course-card button, .registration-box button {
+  background: #17243a;
+  color: white;
+  border: 0;
+  padding: 13px 22px;
+  border-radius: 7px;
+  cursor: pointer;
+  width: 100%;
+}
+.registration-box {
+  margin-top: 35px;
+}
+.registration-box input, .registration-box textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-family: inherit;
+}
+.registration-box textarea {
+  min-height: 90px;
+}
+.registration-box label {
+  display: block;
+  margin-top: 12px;
+}
+@media(max-width:600px) {
+  .courses .section-title h2 {font-size: 23px;}
+}
+</style>
+
+<script>
+function selectCourse(name, price) {
+  document.getElementById('selectedCourse').value =
+    name + ' - ' + price;
+  document.getElementById('registration').scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
+document.getElementById('courseForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('studentName').value;
+  const phone = document.getElementById('studentPhone').value;
+  const job = document.getElementById('studentJob').value;
+  const experience = document.getElementById('studentExperience').value;
+  const course = document.getElementById('selectedCourse').value;
+  const description = document.getElementById('studentDescription').value;
+
+  const message =
+    'درخواست ثبت‌نام دوره RAMON GROUP%0A' +
+    'نام: ' + encodeURIComponent(name) + '%0A' +
+    'موبایل: ' + encodeURIComponent(phone) + '%0A' +
+    'شغل: ' + encodeURIComponent(job) + '%0A' +
+    'سابقه کاری: ' + encodeURIComponent(experience) + '%0A' +
+    'دوره: ' + encodeURIComponent(course) + '%0A' +
+    'توضیحات: ' + encodeURIComponent(description);
+
+  window.open('https://ble.ir/ramongroup402', '_blank');
+  alert('گفت‌وگوی بله باز می‌شود. لطفاً متن زیر را کپی و ارسال کنید:\n\n' +
+    decodeURIComponent(message.replace(/%0A/g, '\n')));
+});
+</script>
+
+  <section class="contact" id="contact">
 <div class="container">
 
 <div class="contact-panel">
