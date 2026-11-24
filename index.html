@@ -499,12 +499,15 @@ section{padding:65px 0}
 
 <div class="slides">
 
+ 
+<div class="slides">
+
   <div class="slide active">
     <img src="https://raw.githubusercontent.com/learningplanning402-del/learning-planning/main/slide1.png" alt="Tender Services">
   </div>
 
   <div class="slide">
-    <img src="https://raw.githubusercontent.com/learningplanning402-del/learning-planning/main/slide2.jpg" alt="Oil, Gas and Petrochemical">
+    <img src="https://raw.githubusercontent.com/learningplanning402-del/learning-planning/main/slide2.jpg" alt="Oil, Gas, Petrochemical and Refinery Projects">
   </div>
 
   <div class="slide">
@@ -512,7 +515,7 @@ section{padding:65px 0}
   </div>
 
   <div class="slide">
-    <img src="https://raw.githubusercontent.com/learningplanning402-del/learning-planning/main/slide4.jpg" alt="Water Transmission">
+    <img src="https://raw.githubusercontent.com/learningplanning402-del/learning-planning/main/slide4.jpg" alt="Water Transmission Pipelines and Stations">
   </div>
 
   <div class="slide">
@@ -529,7 +532,7 @@ section{padding:65px 0}
 </div>
 
 <div class="slide-controls">
-  <button class="slide-arrow" id="prevSlide" type="button">‹</button>
+  <button class="slide-arrow" id="prevSlide" type="button" aria-label="Previous slide">‹</button>
   <div class="slide-dots">
     <button class="slide-dot active" type="button" aria-label="Slide 1"></button>
     <button class="slide-dot" type="button" aria-label="Slide 2"></button>
@@ -537,8 +540,9 @@ section{padding:65px 0}
     <button class="slide-dot" type="button" aria-label="Slide 4"></button>
     <button class="slide-dot" type="button" aria-label="Slide 5"></button>
   </div>
-  <button class="slide-arrow" id="nextSlide" type="button">›</button>
+  <button class="slide-arrow" id="nextSlide" type="button" aria-label="Next slide">›</button>
 </div>
+
 
 </section>
 
@@ -908,55 +912,74 @@ document.getElementById('courseForm').addEventListener('submit', function(e) {
 
 <script>
 const slideContent = [
-{
-en:{
-eyebrow:"PROJECT CONSULTING & SCHEDULING",
-title:"Project Consulting & Scheduling for Oil, Refining and Petrochemical Projects",
-description:"Professional project management consultancy, project scheduling, tender schedule documentation, progress monitoring and project controls for oil, refining and petrochemical developments."
-},
-fa:{
-eyebrow:"مشاوره و برنامه‌ریزی پروژه",
-title:"مشاوره و برنامه‌ریزی پروژه‌های نفت، پالایش و پتروشیمی",
-description:"ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های نفتی، پالایشگاهی و پتروشیمی، متناسب با الزامات کارفرما."
-}
-},
-{
-en:{
-eyebrow:"GAS TRANSMISSION & FACILITIES",
-title:"Project Consulting & Scheduling for Gas Transmission and Facilities",
-description:"Project management consultancy, project schedules, tender schedule documentation and progress control for gas transmission pipelines, launcher and receiver stations and gas pressure boosting facilities."
-},
-fa:{
-eyebrow:"خطوط انتقال گاز و تأسیسات",
-title:"مشاوره و برنامه‌ریزی پروژه‌های خطوط انتقال گاز و تأسیسات",
-description:"ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های خطوط انتقال گاز، ایستگاه‌های لانچر و رسیور و تأسیسات تقویت فشار گاز، متناسب با ساختار سازمانی و الزامات سازمان توسعه گاز ایران."
-}
-},
-{
-en:{
-eyebrow:"BUILDING & CONSTRUCTION PROJECTS",
-title:"Project Consulting & Scheduling for Building and Construction Projects",
-description:"Project management consultancy, project schedules, tender schedule documentation and progress monitoring for residential, commercial, administrative and industrial building projects."
-},
-fa:{
-eyebrow:"پروژه‌های ساختمانی و ابنیه",
-title:"مشاوره و برنامه‌ریزی پروژه‌های ساختمانی و ابنیه",
-description:"ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های ساختمانی، مسکونی، تجاری، اداری و صنعتی، با تمرکز بر مدیریت زمان و هماهنگی فعالیت‌های اجرایی."
-}
-},
-{
-en:{
-eyebrow:"ROAD & INFRASTRUCTURE PROJECTS",
-title:"Project Consulting & Scheduling for Road and Infrastructure Projects",
-description:"Project management consultancy, project schedules, tender schedule documentation and progress control for road construction, rehabilitation, highways, freeways and transportation infrastructure projects."
-},
-fa:{
-eyebrow:"پروژه‌های راه‌سازی و زیرساختی",
-title:"مشاوره و برنامه‌ریزی پروژه‌های راه‌سازی و زیرساختی",
-description:"ارائه خدمات تخصصی مشاوره مدیریت پروژه، تهیه و تدوین برنامه‌های زمان‌بندی پروژه و اسناد مناقصه، توسعه و به‌روزرسانی برنامه‌های اجرایی و کنترل و پایش پیشرفت پروژه‌های احداث، بهسازی و توسعه راه‌ها، بزرگراه‌ها، آزادراه‌ها و زیرساخت‌های حمل‌ونقل، با تمرکز بر مدیریت زمان و کنترل عملکرد اجرایی."
-}
-}
+
+  {
+    en: {
+      eyebrow: "TENDER SERVICES",
+      title: "Tender Documentation & Consultancy Services",
+      description: "Tender document preparation, compilation, review and completion, together with tender process scheduling."
+    },
+    fa: {
+      eyebrow: "خدمات تخصصی مناقصات",
+      title: "مشاوره و خدمات تهیه و جمع‌آوری اسناد مناقصات پیمان",
+      description: "تهیه، بررسی و تکمیل اسناد مناقصه و ارائه برنامه زمان‌بندی فرآیند مناقصات."
+    }
+  },
+
+  {
+    en: {
+      eyebrow: "OIL, GAS & PETROCHEMICAL",
+      title: "Project Planning & Controls for Oil, Gas, Petrochemical and Refinery Industries",
+      description: "Consultancy and project planning and control services for upstream and downstream oil, gas, petrochemical and refinery projects."
+    },
+    fa: {
+      eyebrow: "صنایع نفت، گاز و پتروشیمی",
+      title: "مشاوره و خدمات برنامه‌ریزی و کنترل پروژه‌های نفت، گاز، پتروشیمی و پالایشگاه",
+      description: "ارائه خدمات برنامه‌ریزی و کنترل پروژه در صنایع بالادستی و پایین‌دستی نفت، گاز، پتروشیمی و پالایشگاه."
+    }
+  },
+
+  {
+    en: {
+      eyebrow: "BUILDING & CIVIL WORKS",
+      title: "Project Planning & Controls for Building and Civil Engineering Projects",
+      description: "Consultancy and project planning and control services for building and civil engineering projects."
+    },
+    fa: {
+      eyebrow: "ساختمان و ابنیه",
+      title: "مشاوره و خدمات برنامه‌ریزی و کنترل پروژه‌های ساختمان و ابنیه",
+      description: "ارائه خدمات تخصصی برنامه‌ریزی و کنترل پروژه در طرح‌ها و پروژه‌های ساختمانی و عمرانی."
+    }
+  },
+
+  {
+    en: {
+      eyebrow: "WATER TRANSMISSION",
+      title: "Project Planning & Controls for Water Transmission Pipelines and Stations",
+      description: "Consultancy and project planning and control services for water transmission pipelines and associated stations."
+    },
+    fa: {
+      eyebrow: "خطوط انتقال آب و ایستگاه‌ها",
+      title: "مشاوره و خدمات برنامه‌ریزی و کنترل پروژه‌های خطوط انتقال آب",
+      description: "ارائه خدمات برنامه‌ریزی و کنترل پروژه‌های خطوط انتقال آب به همراه ایستگاه‌های مربوطه."
+    }
+  },
+
+  {
+    en: {
+      eyebrow: "ROADS & RUNWAYS",
+      title: "Project Planning & Controls for Road and Runway Projects",
+      description: "Consultancy and project planning and control services for road construction and runway projects."
+    },
+    fa: {
+      eyebrow: "راه و باند",
+      title: "مشاوره و خدمات برنامه‌ریزی و کنترل پروژه‌های راه و باند",
+      description: "ارائه خدمات تخصصی برنامه‌ریزی و کنترل پروژه در طرح‌های راه‌سازی و احداث باند."
+    }
+  }
+
 ];
+
 
 const languageButton=document.getElementById('languageButton');
 const menuButton=document.getElementById('menuButton');
